@@ -9,7 +9,7 @@ let x = 34
 let y = 17
 
 (* TODO: change this according to the description of problem 1 below. *)
-let z = (x + y) + (y + 2)
+let z = -(x + y) + (y + 2)
 
 let abs_of_z = if z < 0 then 0 - z else z
 

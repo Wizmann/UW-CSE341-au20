@@ -1,0 +1,259 @@
+{
+  "header": {
+    "gtfs_realtime_version": "2.0",
+    "incrementality": 0,
+    "timestamp": 1602370000
+  },
+  "entity": [
+    {
+      "vehicle": {
+        "trip": {
+          "route_num": "107",
+          "route": "Renton Transit Center - Rainier Beach",
+          "atrip_id": "47803655",
+          "direction_id": 1,
+          "start_date": "20201010",
+          "schedule_relationship": "SCHEDULED"
+        },
+        "vehicle": {
+          "id": "3702",
+          "label": "3702"
+        },
+        "position": {
+          "latitude": 47.5501,
+          "longitude": -122.313
+        },
+        "current_stop_sequence": 470,
+        "stop_id": "41780",
+        "current_status": "IN_TRANSIT_TO",
+        "timestamp": 1602370000
+      },
+      "id": "1602365554_3702"
+    },
+    {
+      "vehicle": {
+        "trip": {
+          "route_num": "107",
+          "route": "Renton Transit Center - Rainier Beach",
+          "atrip_id": "47803657",
+          "direction_id": 0,
+          "start_date": "20201010",
+          "schedule_relationship": "SCHEDULED"
+        },
+        "vehicle": {
+          "id": "3713",
+          "label": "3713"
+        },
+        "position": {
+          "latitude": 47.5205,
+          "longitude": -122.27
+        },
+        "current_stop_sequence": 256,
+        "stop_id": "55226",
+        "current_status": "IN_TRANSIT_TO",
+        "timestamp": 1602370000
+      },
+      "id": "1602365554_3713"
+    },
+    {
+      "vehicle": {
+        "trip": {
+          "route_num": "107",
+          "route": "Renton Transit Center - Rainier Beach",
+          "atrip_id": "47803658",
+          "direction_id": 1,
+          "start_date": "20201010",
+          "schedule_relationship": "SCHEDULED"
+        },
+        "vehicle": {
+          "id": "3700",
+          "label": "3700"
+        },
+        "position": {
+          "latitude": 47.4983,
+          "longitude": -122.264
+        },
+        "current_stop_sequence": 203,
+        "stop_id": "55395",
+        "current_status": "IN_TRANSIT_TO",
+        "timestamp": 1602370000
+      },
+      "id": "1602365554_3700"
+    },
+    {
+      "vehicle": {
+        "trip": {
+          "route_num": "11",
+          "route": "Madison Park - Capitol Hill - Downtown Seattle",
+          "atrip_id": "47418794",
+          "direction_id": 0,
+          "start_date": "20201010",
+          "schedule_relationship": "SCHEDULED"
+        },
+        "vehicle": {
+          "id": "7081",
+          "label": "7081"
+        },
+        "position": {
+          "latitude": 47.6152,
+          "longitude": -122.325
+        },
+        "current_stop_sequence": 52,
+        "stop_id": "11150",
+        "current_status": "IN_TRANSIT_TO",
+        "timestamp": 1602370000
+      },
+      "id": "1602365554_7081"
+    },
+    {
+      "vehicle": {
+        "trip": {
+          "route_num": "11",
+          "route": "Madison Park - Capitol Hill - Downtown Seattle",
+          "atrip_id": "47418856",
+          "direction_id": 1,
+          "start_date": "20201010",
+          "schedule_relationship": "SCHEDULED"
+        },
+        "vehicle": {
+          "id": "7098",
+          "label": "7098"
+        },
+        "position": {
+          "latitude": 47.6231,
+          "longitude": -122.297
+        },
+        "current_stop_sequence": 51,
+        "stop_id": "12340",
+        "current_status": "IN_TRANSIT_TO",
+        "timestamp": 1602370000
+      },
+      "id": "1602365554_7098"
+    },
+    {
+      "vehicle": {
+        "trip": {
+          "route_num": "125",
+          "route": "Westwood Vill - S Seattle Coll - Downtown Seattle",
+          "atrip_id": "47382195",
+          "direction_id": 0,
+          "start_date": "20201010",
+          "schedule_relationship": "SCHEDULED"
+        },
+        "vehicle": {
+          "id": "7121",
+          "label": "7121"
+        },
+        "position": {
+          "latitude": 47.6071,
+          "longitude": -122.335
+        },
+        "current_stop_sequence": 208,
+        "stop_id": "578",
+        "current_status": "IN_TRANSIT_TO",
+        "timestamp": 1602370000
+      },
+      "id": "1602365554_7121"
+    },
+    {
+      "vehicle": {
+        "trip": {
+          "route_num": "128",
+          "route": "Southcenter - Alaska Junction - Admiral District",
+          "atrip_id": "47805231",
+          "direction_id": 1,
+          "start_date": "20201010",
+          "schedule_relationship": "SCHEDULED"
+        },
+        "vehicle": {
+          "id": "7120",
+          "label": "7120"
+        },
+        "position": {
+          "latitude": 47.474,
+          "longitude": -122.281
+        },
+        "current_stop_sequence": 464,
+        "stop_id": "41237",
+        "current_status": "IN_TRANSIT_TO",
+        "timestamp": 1602370000
+      },
+      "id": "1602365554_7120"
+    },
+    {
+      "vehicle": {
+        "trip": {
+          "route_num": "128",
+          "route": "Southcenter - Alaska Junction - Admiral District",
+          "atrip_id": "47805232",
+          "direction_id": 1,
+          "start_date": "20201010",
+          "schedule_relationship": "SCHEDULED"
+        },
+        "vehicle": {
+          "id": "7046",
+          "label": "7046"
+        },
+        "position": {
+          "latitude": 47.5173,
+          "longitude": -122.351
+        },
+        "current_stop_sequence": 191,
+        "stop_id": "21090",
+        "current_status": "IN_TRANSIT_TO",
+        "timestamp": 1602370000
+      },
+      "id": "1602365554_7046"
+    },
+    {
+      "vehicle": {
+        "trip": {
+          "route_num": "128",
+          "route": "Southcenter - Alaska Junction - Admiral District",
+          "atrip_id": "47805233",
+          "direction_id": 1,
+          "start_date": "20201010",
+          "schedule_relationship": "SCHEDULED"
+        },
+        "vehicle": {
+          "id": "7049",
+          "label": "7049"
+        },
+        "position": {
+          "latitude": 47.5809,
+          "longitude": -122.387
+        },
+        "current_stop_sequence": 10,
+        "stop_id": "31930",
+        "current_status": "IN_TRANSIT_TO",
+        "timestamp": 1602370000
+      },
+      "id": "1602365554_7049"
+    },
+    {
+      "vehicle": {
+        "trip": {
+          "route_num": "128",
+          "route": "Southcenter - Alaska Junction - Admiral District",
+          "atrip_id": "47805266",
+          "direction_id": 0,
+          "start_date": "20201010",
+          "schedule_relationship": "SCHEDULED"
+        },
+        "vehicle": {
+          "id": "7024",
+          "label": "7024"
+        },
+        "position": {
+          "latitude": 47.5447,
+          "longitude": -122.377
+        },
+        "current_stop_sequence": 452,
+        "stop_id": "36370",
+        "current_status": "IN_TRANSIT_TO",
+        "timestamp": 1602370000
+      },
+      "id": "1602365554_7024"
+    }
+  ]
+}

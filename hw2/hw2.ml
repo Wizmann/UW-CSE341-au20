@@ -215,6 +215,31 @@ let rec assoc (key : 'a) (xs : ('a * 'b) list) : 'b option =
     | (k, v) :: tl -> if key = k then Some v else (assoc key tl)
 ;;
 
+(* Problem 9
+ * Write a function dot that takes a json (call it j) and a string (call it f) and returns a
+ * json option. 
+ * If j is an object that has a field named f, then return Some v where v is the contents of
+ * that field.
+ * If j is not an object or does not contain a field f, then return None.
+ * Sample solution is 4 short lines thanks to an earlier problem.
+*)
+
+let rec dot (j : json) (f : string) : json option =
+    match j with
+    | Object (hd :: tl) -> if fst(hd) = f then (Some (snd hd))
+                           else (dot (Object tl) f)
+    | _ -> None
+
+(* Problem 10
+ * Write a function dots that takes a json called j and a string list called fs that represents
+ * an access path, or in other words, a list of field names. The function dots returns a json option
+ * by recursively accessing the fields in fs, starting at the beginning of the list. If any of the
+ * field accesses occur on non-objects, or to fields that do not exist, return None.
+ * Otherwise, return Some v where v is the value of the field "pointed to" by the access path.
+ * (Hint: Use recursion on fs plus your solution to the previous problem.)
+ * Sample solution is about 7 lines.
+*)
+
 
 (* histogram and histogram_for_access_path are provided, but they use your
    count_occurrences and string_values_for_access_path, so uncomment them

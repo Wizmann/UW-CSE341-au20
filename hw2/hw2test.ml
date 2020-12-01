@@ -64,9 +64,15 @@ let () = assert( (assoc "foo" [("bar", 17);("foo", 19)]) = Some 19)
 let () = assert( (assoc 12 [(12, 17);(13, 19)]) = Some 17)
 let () = assert( (assoc 999 [(12, 17);(13, 19)]) = None)
 
+(* Problem 9 *)
+let () = assert( (dot json_obj "ok") = Some True)
+let () = assert( (dot json_obj "bar") = Some json_array)
+let () = assert( (dot json_obj "foo") = Some json_pi)
+let () = assert( (dot json_pi "foo") = None)
+let () = assert( (dot json_hello "hello") = None)
+
 (*
 
-let test9 = dot (json_obj, "ok") = Some True
 
 let test10 = dots (Object [("f", Object [("g", String "gotcha")])], ["f"; "g"]) = Some (String "gotcha")
 

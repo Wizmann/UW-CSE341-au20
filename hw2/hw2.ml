@@ -58,6 +58,11 @@ let rec reverse items : 'a list =
     | hd :: tl -> reverse(tl) @ [ hd ]
 ;;
 
+let option_get (nullable: 'a option) : 'a =
+    match nullable with
+    | Some (item) -> item
+    | _ -> assert false
+
 (* Part 0: Warm-up *)
 
 (* Problem 1
@@ -239,6 +244,35 @@ let rec dot (j : json) (f : string) : json option =
  * (Hint: Use recursion on fs plus your solution to the previous problem.)
  * Sample solution is about 7 lines.
 *)
+
+let rec dots (j : json) (fs : string list) : json option =
+    match fs with
+    | [] -> assert false
+    | hd :: [] -> (dot j hd)
+    | hd :: tl ->
+            let sub_j = (dot j hd) in
+            if sub_j = None then None
+            else (dots (option_get sub_j) tl)
+
+(* Problem 11
+ * Write a function one_fields that takes a json and returns a string list. If the argument is an
+ * object, then return a list holding all of its field names (not field contents). Else return the
+ * empty list.
+ * Use a tail-recursive, locally defined helper function. The list you return can be in any order,
+ * but it is probably easiest to have the results in reverse order from how they appear in the
+ * object, and this reverse order is fine/expected. Sample solution is about 10 lines.
+*)
+
+let one_fields (j : json) : string list =
+    let rec one_fields_helper (kv : (string * json) list) (keys : string list) : string list =
+        match kv with
+        | [] -> keys
+        | (hd :: tl) -> (one_fields_helper tl (fst(hd)::keys))
+    in
+
+    match j with
+    | Object (obj) -> (one_fields_helper obj [])
+    | _ -> []
 
 
 (* histogram and histogram_for_access_path are provided, but they use your

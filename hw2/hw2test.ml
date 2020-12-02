@@ -71,12 +71,16 @@ let () = assert( (dot json_obj "foo") = Some json_pi)
 let () = assert( (dot json_pi "foo") = None)
 let () = assert( (dot json_hello "hello") = None)
 
+(* Problem 10 *)
+let () = assert( (dots (Object [("f", Object [("g", String "gotcha")])]) ["f"; "g"]) = Some (String "gotcha"))
+let () = assert( (dots (Object [("f", Object [("g", String "gotcha")])]) ["f"; "gw"]) = None)
+let () = assert( (dots (Object [("f", Object [("g", String "gotcha")])]) ["a"; "b"]) = None)
+
+(* Problem 11 *)
+let () = assert( (one_fields json_pi) = [])
+let () = assert( (one_fields json_obj) = List.rev ["foo";"bar";"ok"])
+
 (*
-
-
-let test10 = dots (Object [("f", Object [("g", String "gotcha")])], ["f"; "g"]) = Some (String "gotcha")
-
-let test11 = one_fields json_obj = List.rev ["foo";"bar";"ok"]
 
 let test12 = not (no_repeats ["foo";"bar";"foo"])
 

@@ -58,10 +58,23 @@ let rec reverse items : 'a list =
     | hd :: tl -> reverse(tl) @ [ hd ]
 ;;
 
-let option_get (nullable: 'a option) : 'a =
+let option_get (nullable : 'a option) : 'a =
     match nullable with
     | Some (item) -> item
     | _ -> assert false
+;;
+
+let rec map (lambda : ('a -> 'b)) (items : 'a list) : ('b list) =
+    match items with
+    | [] -> []
+    | (hd :: tl) -> (lambda hd) :: (map lambda tl)
+;;
+
+let rec flatten (ll : 'a list list) : ('a list) =
+    match ll with
+    | [] -> []
+    | (hd :: tl) -> hd @ (flatten tl)
+;;
 
 (* Part 0: Warm-up *)
 
@@ -79,7 +92,7 @@ let option_get (nullable: 'a option) : 'a =
 *)
 
 let make_silly_json(n: int) : json = 
-    Array (range 1 n |> reverse |> List.map (fun i -> Object [("n", Num (float_of_int i)); ("b", True)]))
+    Array (range 1 n |> reverse |> map (fun i -> Object [("n", Num (float_of_int i)); ("b", True)]))
 ;;
 
 (* Part 1: Printing JSON values *)
@@ -139,8 +152,8 @@ let rec string_of_json(obj: json) : string =
     | False -> "false"
     | True -> "true"
     | Null -> "null"
-    | Array (sub_objs) -> "[" ^ (concat_with ", " (List.map string_of_json sub_objs)) ^ "]"
-    | Object (sub_objs) -> "{" ^ (concat_with ", " (List.map make_key_value sub_objs)) ^ "}"
+    | Array (sub_objs) -> "[" ^ (concat_with ", " (map string_of_json sub_objs)) ^ "]"
+    | Object (sub_objs) -> "{" ^ (concat_with ", " (map make_key_value sub_objs)) ^ "}"
 
 (* Part 2: Processing JSON values *)
 
@@ -273,6 +286,62 @@ let one_fields (j : json) : string list =
     match j with
     | Object (obj) -> (one_fields_helper obj [])
     | _ -> []
+;;
+
+(* Problem 12
+ * Write a function no_repeats that takes a string list and returns a bool that is true if and
+ * only if no string appears more than once in the input. Do not (!) use any explicit recursion.
+ * Rather, use provided helper function dedup (which returns its argument without duplicates)
+ * together with standard library function List.length to complete this problem in one line.
+*)
+
+let no_repeats (strs : string list) : bool =
+    (List.length (dedup strs)) = (List.length strs)
+;;
+
+(* Problem 13
+ * Write a function recursive_no_field_repeats that takes a json and returns a bool that is
+ * true if and only if no object anywhere "inside" (arbitrarily nested) the json argument has
+ * repeated field names. (Notice the proper answer for a json value like False is true. Also
+ * note that it is not relevant that different objects may have field names in common.)
+ * In addition to using some of your previous functions, you will want two locally defined
+ * helper functions for processing the elements of a JSON array and the contents of a JSON
+ * object's fields. By defining these helper functions locally, rather than at the top level,
+ * they can call recursive_no_field_repeats in addition to calling themselves recursively.
+ * Sample solution is about 15 lines.
+*)
+let rec get_all_keys (obj : json) : string list = 
+    match obj with
+    | Object [] -> []
+    | Object ((key, value) :: tl) -> [ key ] @ (get_all_keys value) @ (get_all_keys (Object tl))
+    | Array (sub_objs) -> (flatten (map get_all_keys sub_objs))
+    | _ -> []
+
+let recursive_no_field_repeats (obj : json) : bool =
+    ( no_repeats (get_all_keys obj) )
+
+(* Problem 14
+ * Write a function count_occurrences of type string list * exn -> (string * int) list.
+ * If the string list argument is sorted (using OCaml's built-in comparison operator, <),
+ * then the function should return a list where each string is paired with the number of times
+ * it occurs. (The order in the output list does not matter.) If the list is not sorted, then
+ * raise the exn argument. Your implementation should make a single pass over the string list
+ * argument, primarily using a tail-recursive helper function.
+ * You will want the helper function to take a few arguments, including the "current" string
+ * and its "current" count.
+ * Sample solution is about 12 lines.
+*)
+
+(* Problem 15
+ * Write a function string_values_for_access_path of type
+ *    (string list) * (json list) -> string list
+ * (the parentheses in this type are optional, so the REPL won't print them).
+ * For any object in the json list that has a field available via the given "access path"
+ * (string list), and has contents that are a JSON string (e.g., String "hi") put the contents
+ * string (e.g., "hi") in the output list (order does not matter; the output should have
+ * duplicates when appropriate).
+ * Sample solution is 6 lines thanks to dots.
+*)
 
 
 (* histogram and histogram_for_access_path are provided, but they use your

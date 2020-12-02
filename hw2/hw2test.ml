@@ -80,18 +80,43 @@ let () = assert( (dots (Object [("f", Object [("g", String "gotcha")])]) ["a"; "
 let () = assert( (one_fields json_pi) = [])
 let () = assert( (one_fields json_obj) = List.rev ["foo";"bar";"ok"])
 
+(* Problem 12 *)
+let () = assert((no_repeats []) = true)
+let () = assert((no_repeats ["foo";"bar";"foo"]) = false)
+let () = assert((no_repeats ["foo";"bar";"baz"]) = true)
+
+(* Problem 13 *)
+let nest1 = Array [Object [];
+                   Object[("a",True);
+                          ("b",Object[("foo",True);
+                                      ("foo",True)]);
+                          ("c",True)];
+                   Object []]
+let () = assert((recursive_no_field_repeats nest1) = false)
+
+let nest2 = Array [Object [];
+                   Object[("a",True);
+                          ("b",Object[("foo",True);
+                                      ("bar",True)]);
+                          ("c",True)];
+                   Object []]
+let () = assert((recursive_no_field_repeats nest2) = true)
+
+let nest3 = Array [Object [];
+                   Object[("a",True);
+                          ("b",Object[("foo",True);
+                                      ("bar",True)]);
+                          ("foo",True)];
+                   Object []]
+let () = assert((recursive_no_field_repeats nest3) = false)
+
+let nest4 = Array [Object []; Object []]
+let () = assert((recursive_no_field_repeats nest4) = true)
+
+let nest5 = json_pi
+let () = assert((recursive_no_field_repeats nest5) = true)
+
 (*
-
-let test12 = not (no_repeats ["foo";"bar";"foo"])
-
-let nest = Array [Object [];
-                  Object[("a",True);
-                         ("b",Object[("foo",True);
-                                     ("foo",True)]);
-                         ("c",True)];
-                  Object []]
-
-let test13 = not (recursive_no_field_repeats nest)
 
 (* Any order is allowed by the specification, so it's ok to fail this test because of a different order. 
    You can edit this test to match your implementation's order. *)

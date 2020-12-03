@@ -116,28 +116,76 @@ let () = assert((recursive_no_field_repeats nest4) = true)
 let nest5 = json_pi
 let () = assert((recursive_no_field_repeats nest5) = true)
 
-(*
-
+(* Problem 14 *)
 (* Any order is allowed by the specification, so it's ok to fail this test because of a different order. 
    You can edit this test to match your implementation's order. *)
-let test14a = count_occurrences (["a"; "a"; "b"], Failure "") = [("b",1);("a",2)]
+let () = assert(
+    (count_occurrences ["a"; "a"; "b"] (Failure "")) = [("a", 2);("b", 1)])
+let () = assert(
+    (count_occurrences [] (Failure "")) = [])
 
 (* test to see that an exception is thrown when the input list is not sorted *)
-let test14b = try count_occurrences (["b"; "a"; "b"], Failure "") = []
-              with Failure _ -> true
+let () = assert(
+    try (count_occurrences ["b"; "a"; "b"] (Failure "")) = [("dummy", 123)]
+    with Failure _ -> true
+)
 
-let test15 = string_values_for_access_path (["x"; "y"], [Object [("a", True);("x", Object [("y", String "foo")])];
-                                                         Object [("x", Object [("y", String "bar")]); ("b", True)]])
-            = ["foo";"bar"]
+(* Problem 15 *)
+let () = assert(
+    (string_values_for_access_path
+        ["x"; "y"]
+        [Object [("a", True);("x", Object [("y", String "foo")])]; Object [("x", Object [("y", String "bar")]); ("b", True)]])
+    = ["foo";"bar"] )
 
-let test16 = filter_access_path_value (["x"; "y"], "foo",
-                                       [Object [("x", Object [("y", String "foo")]); ("z", String "bar")];
-                                        Object [("x", Object [("y", String "foo")]); ("z", String "baz")];
-                                        Object [("x", String "a")];
-                                        Object []]) 
+let () = assert(
+    (string_values_for_access_path ["x"; "y"] [ json_array ]) = [])
+
+let () = assert(
+    (string_values_for_access_path
+        ["x"; "y"]
+        [Object [("a", True);("x", Object [("y", String "foo")])]; Object [("x", Object [("y", False)]); ("b", True)]])
+    = ["foo"] )
+
+(* Problem 16 *)
+let () = assert(
+    (filter_access_path_value ["x"; "y"]
+                              "foo"
+                              [Object [("x", Object [("y", String "foo")]); ("z", String "bar")];
+                               Object [("x", Object [("y", String "foo")]); ("z", String "baz")];
+                               Object [("x", String "a")];
+                               Object []])
              = 
              [Object [("x", Object [("y", String "foo")]); ("z", String "bar")];
-              Object [("x", Object [("y", String "foo")]); ("z", String "baz")]]
+              Object [("x", Object [("y", String "foo")]); ("z", String "baz")]] )
+
+let () = assert(
+    (filter_access_path_value ["x"]
+                              "b"
+                              [Object [("x", Object [("y", String "foo")]); ("z", String "bar")];
+                               Object [("x", Object [("y", String "foo")]); ("z", String "baz")];
+                               Object [("x", String "a")];
+                               Object []])
+             = [] )
+
+(* Problem 17 *)
+let pgascse =
+  { latitude = 47.653221;
+    longitude = -122.305708 }
+
+let () =
+    let pgascse = { latitude = 47.653221; longitude = -122.305708 } in
+    assert( (in_rect u_district pgascse) = true)
+
+let () =
+    let pgascse = { latitude = 40.653221; longitude = -122.305708 } in
+    assert( (in_rect u_district pgascse) = false)
+
+let () =
+    let pgascse = { latitude = 47.653221; longitude = 122.305708 } in
+    assert( (in_rect u_district pgascse) = false)
+
+(*
+
 
 
 let pgascse =

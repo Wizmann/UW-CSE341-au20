@@ -332,6 +332,22 @@ let recursive_no_field_repeats (obj : json) : bool =
  * Sample solution is about 12 lines.
 *)
 
+let rec count_occurrences_helper (current : (string * int)) (strlist : string list) (result : (string * int) list) (error : exn) : ((string * int) list) =
+        match strlist with
+        | [] -> if (snd current) > 0 then (result @ [ current ]) else result
+        | hd :: tl ->
+                if hd < (fst current) then
+                    (raise error)
+                else if hd = (fst current) then
+                    (count_occurrences_helper ((fst current), ((snd current) + 1)) tl result error)
+                else if (snd current) > 0 then
+                    (count_occurrences_helper (hd, 1) tl (result @ [ current ]) error)
+                else
+                    (count_occurrences_helper (hd, 1) tl result error)
+
+let count_occurrences (strlist : string list) (error : exn) : (string * int) list =
+    (count_occurrences_helper ("", 0) strlist [] error)
+
 (* Problem 15
  * Write a function string_values_for_access_path of type
  *    (string list) * (json list) -> string list
@@ -342,6 +358,46 @@ let recursive_no_field_repeats (obj : json) : bool =
  * duplicates when appropriate).
  * Sample solution is 6 lines thanks to dots.
 *)
+let rec string_values_for_access_path (path : string list) (jsonlist : json list) : string list =
+    let get_string_list_from_value (j : json option) : string list =
+        match j with
+        | Some String (s) -> [ s ]
+        | _ -> []
+    in
+    match jsonlist with
+    | [] -> []
+    | hd :: tl -> (get_string_list_from_value (dots hd path)) @ (string_values_for_access_path path tl)
+;;
+
+(* Problem 16
+ * Write a function filter_access_path_value of type
+ *     string list * string * json list -> json list
+ * The output should be a subset of the third argument, containing exactly those elements of
+ * the input list that have a field available via the given access path, and that field's
+ * contents are a JSON string equal to the second argument.
+ * Sample solution uses dots and is less than 10 lines.
+*)
+
+let rec filter_access_path_value (path : string list) (value : string) (jsonlist : json list) : json list =
+    match jsonlist with
+    | [] -> []
+    | hd :: tl -> (if (dots hd path) = (Some (String value)) then [ hd ] else [ ]) @ (filter_access_path_value path value tl)
+
+(* Problem 17
+ * Some of the bus data uses latitude and longitude positions to describe the location of vehicles in
+* real time. To narrow our focus onto a particular geographical area, we will use the record types rect
+* and point, which represent a rectangle and a point, respectively. The types are defined in the starter
+* code, but copied here for completeness.
+*     type rect = { min_latitude: float; max_latitude: float; min_longitude: float; max_longitude: float }
+*     type point = { latitude: float; longitude: float }
+* Write a function in_rect of type rect * point -> bool that determines whether a given point falls
+* inside a given rectangle (inclusive).
+* Solution is two lines and uses a lot of conjunction (&&).
+*)
+
+let in_rect (area : rect) (position : point) : bool =
+    (area.min_latitude <= position.latitude && position.latitude <= area.max_latitude &&
+     area.min_longitude <= position.longitude && position.longitude <= area.max_longitude)
 
 
 (* histogram and histogram_for_access_path are provided, but they use your

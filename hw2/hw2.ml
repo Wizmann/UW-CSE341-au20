@@ -64,6 +64,11 @@ let option_get (nullable : 'a option) : 'a =
     | _ -> assert false
 ;;
 
+let option_is_none(nullable : 'a option) : bool =
+    match nullable with
+    | None -> true
+    | _ -> false
+
 let rec map (lambda : ('a -> 'b)) (items : 'a list) : ('b list) =
     match items with
     | [] -> []
@@ -399,6 +404,55 @@ let in_rect (area : rect) (position : point) : bool =
     (area.min_latitude <= position.latitude && position.latitude <= area.max_latitude &&
      area.min_longitude <= position.longitude && position.longitude <= area.max_longitude)
 
+(* Problem 18
+ * Write a function point_of_json of type json -> point option. If the argument is a json object that
+ * contains fields named "latitude" and "longitude", both of which are json numbers, then point_of_json
+ * returns `Some p` where p is the point represented by these coordinates. Otherwise, it returns `None`.
+ * Solution is 5 lines and uses dot and nested patterns.
+*)
+
+let point_of_json (j : json) : point option =
+    let extract_num_from_json key =
+        match (dot j key) with
+        | Some Num (num) -> (Some num)
+        | _ -> None
+    in
+    let lati = (extract_num_from_json "latitude") in
+    let long = (extract_num_from_json "longitude") in
+    if not (option_is_none lati) && not (option_is_none long) then
+        Some { latitude = (option_get lati); longitude = (option_get long) }
+    else
+        None
+
+(* Problem 19
+ * Write a function filter_access_path_in_rect of type
+ *     string list * rect * json list -> json list
+ * The output should be a subset of the third argument, containing exactly those elements of the input list
+ * that (1) have a field available via the given access path, (2) that field's contents are a JSON object that
+ * can be converted to a point via point_of_json, and (3) the resulting point is within the rectangle
+ * specified by the second argument.
+ * Sample solution is less than 15 lines.
+*)
+let rec filter_access_path_in_rect (path : string list) (area : rect) (jsonlist : json list) : json list =
+    match jsonlist with
+    | [] -> []
+    | hd :: tl ->
+            match (dots hd path) with
+            | Some (obj) ->
+                    let p = (point_of_json obj) in
+                    if (option_is_none p) then []
+                    else if (in_rect area (option_get p)) then [ hd ]
+                    else []
+            | _ -> []
+            @ (filter_access_path_in_rect path area tl)
+
+(* Problem 20
+ * After your definition of filter_access_path_in_rect, write a comment containing 1-3 sentences describing
+ * the similarities with filter_access_path_value. Can you think of any way to refactor these two function
+ * to use a common, more general function? (Do not actually do this refactoring.)
+ * On a scale from 1 to "run-time error", how annoyed are you about having to write both of these functions
+ * on the same homework?
+*)
 
 (* histogram and histogram_for_access_path are provided, but they use your
    count_occurrences and string_values_for_access_path, so uncomment them

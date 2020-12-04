@@ -173,34 +173,58 @@ let pgascse =
     longitude = -122.305708 }
 
 let () =
-    let pgascse = { latitude = 47.653221; longitude = -122.305708 } in
-    assert( (in_rect u_district pgascse) = true)
+    let pgascse1 = { latitude = 47.653221; longitude = -122.305708 } in
+    assert( (in_rect u_district pgascse1) = true)
 
 let () =
-    let pgascse = { latitude = 40.653221; longitude = -122.305708 } in
-    assert( (in_rect u_district pgascse) = false)
+    let pgascse2 = { latitude = 40.653221; longitude = -122.305708 } in
+    assert( (in_rect u_district pgascse2) = false)
 
 let () =
-    let pgascse = { latitude = 47.653221; longitude = 122.305708 } in
-    assert( (in_rect u_district pgascse) = false)
+    let pgascse3 = { latitude = 47.653221; longitude = 122.305708 } in
+    assert( (in_rect u_district pgascse3) = false)
 
-(*
-
-
-
-let pgascse =
-  { latitude = 47.653221;
-    longitude = -122.305708 }
-
-let test17 = in_rect (u_district, pgascse)
-
+(* Problem 18 *)
 let json_pgascse = Object [("latitude", Num 47.653221); ("longitude", Num (-122.305708))]
 
-let test18 = point_of_json json_pgascse = Some pgascse
+let () = 
+    let json_pgascse1 =
+        Object [("latitude", Num 47.653221); ("longitude", Num (-122.305708))] in
+    let pgascse1 = { latitude = 47.653221; longitude = -122.305708 } in
+    assert( (point_of_json json_pgascse1) = (Some pgascse1) )
 
-let test19 = filter_access_path_in_rect (["x"; "y"], u_district, [Object [("x", Object [("y", json_pgascse)])]; Object []])
-             = [Object [("x", Object [("y", json_pgascse)])]]
+let () = 
+    let json_pgascse2 =
+        Object [("hello", Num 47.653221); ("world", Num (-122.305708))] in
+    assert( (point_of_json json_pgascse2) = None )
 
+let () = 
+    let json_pgascse3 =
+        Object [("latitude", String "hahaha"); ("longitude", Num (-122.305708))] in
+    assert( (point_of_json json_pgascse3) = None )
+
+let () = 
+    let json_pgascse4 = Object [] in
+    assert( (point_of_json json_pgascse4) = None )
+
+(* Problem 19 *)
+
+let () = assert(
+    (filter_access_path_in_rect ["x"; "y"] u_district [Object [("x", Object [("y", json_pgascse)])]; Object []])
+             = [Object [("x", Object [("y", json_pgascse)])]] )
+
+let () = assert(
+    (filter_access_path_in_rect ["x"; "z"] u_district [Object [("x", Object [("y", json_pgascse)])]; Object []])
+             = [])
+
+let () = assert(
+    let json_pgascse1 = Object [("latitude", Num 47.653221); ("longitude", Num (122.305708))] in
+    (filter_access_path_in_rect ["x"; "z"] u_district [Object [("x", Object [("y", json_pgascse1)])]; Object []])
+             = [])
+
+(* Problem 20 *)
+
+(*
 
 (* Commented out tests for challenge problems *)
 

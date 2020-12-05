@@ -38,8 +38,8 @@ let sort ls = List.sort compare ls
 #print_length 3;;
 
 #use "parsed_small_bus.ml";;
-(* #use "parsed_medium_bus.ml";; *)
-(* #use "parsed_complete_bus.ml";; *)
+#use "parsed_medium_bus.ml";;
+#use "parsed_complete_bus.ml";;
 
 ;;
 #print_depth 10;;
@@ -247,10 +247,10 @@ let rec assoc (key : 'a) (xs : ('a * 'b) list) : 'b option =
  * Sample solution is 4 short lines thanks to an earlier problem.
 *)
 
-let rec dot (j : json) (f : string) : json option =
+let rec dot ((j : json), (f : string)) : json option =
     match j with
     | Object (hd :: tl) -> if fst(hd) = f then (Some (snd hd))
-                           else (dot (Object tl) f)
+                           else (dot ((Object tl), f))
     | _ -> None
 
 (* Problem 10
@@ -266,9 +266,9 @@ let rec dot (j : json) (f : string) : json option =
 let rec dots (j : json) (fs : string list) : json option =
     match fs with
     | [] -> assert false
-    | hd :: [] -> (dot j hd)
+    | hd :: [] -> (dot (j, hd))
     | hd :: tl ->
-            let sub_j = (dot j hd) in
+            let sub_j = (dot (j, hd)) in
             if sub_j = None then None
             else (dots (option_get sub_j) tl)
 
@@ -350,7 +350,7 @@ let rec count_occurrences_helper (current : (string * int)) (strlist : string li
                 else
                     (count_occurrences_helper (hd, 1) tl result error)
 
-let count_occurrences (strlist : string list) (error : exn) : (string * int) list =
+let count_occurrences ((strlist : string list), (error : exn)) : (string * int) list =
     (count_occurrences_helper ("", 0) strlist [] error)
 
 (* Problem 15
@@ -363,7 +363,7 @@ let count_occurrences (strlist : string list) (error : exn) : (string * int) lis
  * duplicates when appropriate).
  * Sample solution is 6 lines thanks to dots.
 *)
-let rec string_values_for_access_path (path : string list) (jsonlist : json list) : string list =
+let rec string_values_for_access_path ((path : string list), (jsonlist : json list)) : string list =
     let get_string_list_from_value (j : json option) : string list =
         match j with
         | Some String (s) -> [ s ]
@@ -371,7 +371,7 @@ let rec string_values_for_access_path (path : string list) (jsonlist : json list
     in
     match jsonlist with
     | [] -> []
-    | hd :: tl -> (get_string_list_from_value (dots hd path)) @ (string_values_for_access_path path tl)
+    | hd :: tl -> (get_string_list_from_value (dots hd path)) @ (string_values_for_access_path (path, tl))
 ;;
 
 (* Problem 16
@@ -383,10 +383,16 @@ let rec string_values_for_access_path (path : string list) (jsonlist : json list
  * Sample solution uses dots and is less than 10 lines.
 *)
 
-let rec filter_access_path_value (path : string list) (value : string) (jsonlist : json list) : json list =
+let rec filter_access_path_helper(path : string list) (filter : json -> bool) (jsonlist :json list) : json list =
     match jsonlist with
     | [] -> []
-    | hd :: tl -> (if (dots hd path) = (Some (String value)) then [ hd ] else [ ]) @ (filter_access_path_value path value tl)
+    | hd :: tl -> (if filter(hd) then [ hd ] else [ ]) @ (filter_access_path_helper path filter tl)
+
+let rec filter_access_path_value ((path : string list), (value : string), (jsonlist : json list)) : json list =
+    let filter (obj : json) : bool = 
+        ((dots obj path) = (Some (String value)))
+    in
+    (filter_access_path_helper path filter jsonlist)
 
 (* Problem 17
  * Some of the bus data uses latitude and longitude positions to describe the location of vehicles in
@@ -413,7 +419,7 @@ let in_rect (area : rect) (position : point) : bool =
 
 let point_of_json (j : json) : point option =
     let extract_num_from_json key =
-        match (dot j key) with
+        match (dot (j, key)) with
         | Some Num (num) -> (Some num)
         | _ -> None
     in
@@ -433,18 +439,15 @@ let point_of_json (j : json) : point option =
  * specified by the second argument.
  * Sample solution is less than 15 lines.
 *)
-let rec filter_access_path_in_rect (path : string list) (area : rect) (jsonlist : json list) : json list =
-    match jsonlist with
-    | [] -> []
-    | hd :: tl ->
-            match (dots hd path) with
-            | Some (obj) ->
-                    let p = (point_of_json obj) in
-                    if (option_is_none p) then []
-                    else if (in_rect area (option_get p)) then [ hd ]
-                    else []
-            | _ -> []
-            @ (filter_access_path_in_rect path area tl)
+let rec filter_access_path_in_rect ((path : string list), (area : rect), (jsonlist : json list)) : json list =
+    let filter (j : json) : bool =
+        match (dots j path) with
+        | Some (obj) ->
+                let p = (point_of_json obj) in
+                not (option_is_none p) && (in_rect area (option_get p))
+        | _ -> false
+    in
+    (filter_access_path_helper path filter jsonlist)
 
 (* Problem 20
  * After your definition of filter_access_path_in_rect, write a comment containing 1-3 sentences describing
@@ -454,12 +457,19 @@ let rec filter_access_path_in_rect (path : string list) (area : rect) (jsonlist 
  * on the same homework?
 *)
 
+(* Answer:
+ * Both of the functions are doing some filtering logic in a json object.
+ * One possible way is to make a common function for filtering, so that we can pass in customized filter 
+ * function to do the real logic.
+ * Actually, neither of the functions are not annoying as they are not complicated nor need to worry about
+ * the compatibility issues...
+*)
+
 (* histogram and histogram_for_access_path are provided, but they use your
    count_occurrences and string_values_for_access_path, so uncomment them
    after doing earlier problems *)
 exception SortIsBroken
 
-(* 
 let histogram (xs : string list) : (string * int) list =
   let sorted_xs = List.sort (fun a b -> compare a b) xs in
   let counts = count_occurrences (sorted_xs,SortIsBroken) in
@@ -470,7 +480,6 @@ let histogram (xs : string list) : (string * int) list =
 
 let histogram_for_access_path (fs, js) =
   histogram (string_values_for_access_path (fs, js))
-*)
 
 (* The definition of the U district for purposes of this assignment :) *)
 let u_district =
@@ -488,16 +497,67 @@ let u_district =
 
 (* uncomment these lines *and* the lines at the top of the file that load "parsed_complete_bus.ml"
    when ready to work on part 3 *)
-(* 
+
 let complete_bus_positions_list =
   match dot(complete_bus_positions, "entity") with
   | Some (Array l) -> l
   | _ -> failwith "complete_bus_positions_list"
-*)
 ;;
+
 #print_depth 10;;
 #print_length 1000;;
 
 (**** PUT PROBLEMS 21-26 HERE ****)
+
+(* Problem 21
+ * Bind to the variable route_histogram a histogram (using histogram_for_access_path) of the objects
+ * in complete_bus_positions_list based on the "route_num" field.
+ * (Hint: since this field is nested inside several objects, you need to look at the data to figure out
+ * the rest of the access path that comes before this field.)
+*)
+let route_histogram =
+    histogram_for_access_path(["vehicle"; "trip"; "route_num"],
+                              complete_bus_positions_list)
+
+(* Problem 22
+ * Bind to the variable top_three_routes a list containing the three most frequently appearing route numbers
+ * in route_histogram.
+ * (Hint: use take and another function from part 2.)
+*)
+let top_three_routes =
+    route_histogram |> firsts |> take 3
+;;
+
+(* Problem 23
+ * Bind to the variable buses_in_ud a list containing all records referring to buses in the U district.
+ * For the purposes of this problem, the U district is defined by the rectangle bound to the variable u_district
+ * in the provided code.
+*)
+let buses_in_ud =
+    filter_access_path_in_rect(["vehicle"; "position"], u_district,  complete_bus_positions_list)
+
+(* Problem 24
+ * Bind to the variable ud_route_histogram a histogram of the objects in buses_in_ud based on the "route_num"
+ * field, as in problem 21.
+*)
+let ud_route_histogram =
+    histogram_for_access_path(["vehicle"; "trip"; "route_num"], buses_in_ud)
+;;
+
+(* Problem 25
+ * Bind to the variable top_three_ud_routes a list containing the three most frequently appearing route numbers
+ * in ud_route_histogram, as in problem 22.
+*)
+
+let top_three_ud_routes =
+    ud_route_histogram |> firsts |> take 3
+
+(* Problem 26
+ * Bind to the variable all_fourty_fours a list containing all records from complete_bus_positions that refer
+ * to a vehicle whose (suitably nested, as in problem 21) route_num field is "44".
+*)
+let all_fourty_fours =
+    filter_access_path_value(["vehicle"; "trip"; "route_num"], "44", complete_bus_positions_list)
+;;
 
 (* see hw2challenge.ml for challenge problems *)

@@ -65,11 +65,11 @@ let () = assert( (assoc 12 [(12, 17);(13, 19)]) = Some 17)
 let () = assert( (assoc 999 [(12, 17);(13, 19)]) = None)
 
 (* Problem 9 *)
-let () = assert( (dot json_obj "ok") = Some True)
-let () = assert( (dot json_obj "bar") = Some json_array)
-let () = assert( (dot json_obj "foo") = Some json_pi)
-let () = assert( (dot json_pi "foo") = None)
-let () = assert( (dot json_hello "hello") = None)
+let () = assert( (dot (json_obj, "ok")) = Some True)
+let () = assert( (dot (json_obj, "bar")) = Some json_array)
+let () = assert( (dot (json_obj, "foo")) = Some json_pi)
+let () = assert( (dot (json_pi, "foo")) = None)
+let () = assert( (dot (json_hello, "hello")) = None)
 
 (* Problem 10 *)
 let () = assert( (dots (Object [("f", Object [("g", String "gotcha")])]) ["f"; "g"]) = Some (String "gotcha"))
@@ -120,47 +120,47 @@ let () = assert((recursive_no_field_repeats nest5) = true)
 (* Any order is allowed by the specification, so it's ok to fail this test because of a different order. 
    You can edit this test to match your implementation's order. *)
 let () = assert(
-    (count_occurrences ["a"; "a"; "b"] (Failure "")) = [("a", 2);("b", 1)])
+    (count_occurrences (["a"; "a"; "b"], (Failure ""))) = [("a", 2);("b", 1)])
 let () = assert(
-    (count_occurrences [] (Failure "")) = [])
+    (count_occurrences ([], (Failure ""))) = [])
 
 (* test to see that an exception is thrown when the input list is not sorted *)
 let () = assert(
-    try (count_occurrences ["b"; "a"; "b"] (Failure "")) = [("dummy", 123)]
+    try (count_occurrences (["b"; "a"; "b"], (Failure ""))) = [("dummy", 123)]
     with Failure _ -> true
 )
 
 (* Problem 15 *)
 let () = assert(
     (string_values_for_access_path
-        ["x"; "y"]
-        [Object [("a", True);("x", Object [("y", String "foo")])]; Object [("x", Object [("y", String "bar")]); ("b", True)]])
+        (["x"; "y"],
+        [Object [("a", True);("x", Object [("y", String "foo")])]; Object [("x", Object [("y", String "bar")]); ("b", True)]]))
     = ["foo";"bar"] )
 
 let () = assert(
-    (string_values_for_access_path ["x"; "y"] [ json_array ]) = [])
+    (string_values_for_access_path (["x"; "y"], [ json_array ])) = [])
 
 let () = assert(
     (string_values_for_access_path
-        ["x"; "y"]
-        [Object [("a", True);("x", Object [("y", String "foo")])]; Object [("x", Object [("y", False)]); ("b", True)]])
+        (["x"; "y"],
+        [Object [("a", True);("x", Object [("y", String "foo")])]; Object [("x", Object [("y", False)]); ("b", True)]]))
     = ["foo"] )
 
 (* Problem 16 *)
 let () = assert(
-    (filter_access_path_value ["x"; "y"]
-                              "foo"
-                              [Object [("x", Object [("y", String "foo")]); ("z", String "bar")];
-                               Object [("x", Object [("y", String "foo")]); ("z", String "baz")];
-                               Object [("x", String "a")];
-                               Object []])
+    filter_access_path_value(["x"; "y"],
+                             "foo",
+                             [Object [("x", Object [("y", String "foo")]); ("z", String "bar")];
+                              Object [("x", Object [("y", String "foo")]); ("z", String "baz")];
+                              Object [("x", String "a")];
+                              Object []])
              = 
              [Object [("x", Object [("y", String "foo")]); ("z", String "bar")];
               Object [("x", Object [("y", String "foo")]); ("z", String "baz")]] )
 
 let () = assert(
-    (filter_access_path_value ["x"]
-                              "b"
+    filter_access_path_value(["x"],
+                              "b",
                               [Object [("x", Object [("y", String "foo")]); ("z", String "bar")];
                                Object [("x", Object [("y", String "foo")]); ("z", String "baz")];
                                Object [("x", String "a")];
@@ -210,19 +210,42 @@ let () =
 (* Problem 19 *)
 
 let () = assert(
-    (filter_access_path_in_rect ["x"; "y"] u_district [Object [("x", Object [("y", json_pgascse)])]; Object []])
+    filter_access_path_in_rect(["x"; "y"], u_district, [Object [("x", Object [("y", json_pgascse)])]; Object []])
              = [Object [("x", Object [("y", json_pgascse)])]] )
 
 let () = assert(
-    (filter_access_path_in_rect ["x"; "z"] u_district [Object [("x", Object [("y", json_pgascse)])]; Object []])
+    filter_access_path_in_rect(["x"; "z"], u_district, [Object [("x", Object [("y", json_pgascse)])]; Object []])
              = [])
 
 let () = assert(
     let json_pgascse1 = Object [("latitude", Num 47.653221); ("longitude", Num (122.305708))] in
-    (filter_access_path_in_rect ["x"; "z"] u_district [Object [("x", Object [("y", json_pgascse1)])]; Object []])
+    filter_access_path_in_rect(["x"; "z"], u_district, [Object [("x", Object [("y", json_pgascse1)])]; Object []])
              = [])
 
 (* Problem 20 *)
+(* None *)
+
+(* Problem 21 *)
+ let () = assert(
+    route_histogram =
+        [("E Line", 12); ("C Line", 11); ("7", 10); ("62", 10); ("A Line", 9); ("40", 9); ("150", 9); ("F Line", 8); ("41", 8); ("120", 8); ("106", 8); ("D Line", 7); ("550", 7); ("45", 7); ("B Line", 6); ("49", 6); ("48", 6); ("44", 6); ("36", 6); ("128", 6); ("8", 5); ("70", 5); ("65", 5); ("522", 5); ("5", 5); ("255", 5); ("250", 5); ("245", 5); ("165", 5); ("160", 5); ("First Hill Streetcar", 4); ("67", 4); ("60", 4); ("545", 4); ("50", 4); ("271", 4); ("26", 4); ("221", 4); ("21", 4); ("2", 4); ("181", 4); ("132", 4); ("131", 4); ("101", 4); ("75", 3); ("554", 3); ("348", 3); ("346", 3); ("32", 3); ("28", 3); ("27", 3); ("240", 3); ("24", 3); ("239", 3); ("225", 3); ("183", 3); ("168", 3); ("13", 3); ("124", 3); ("107", 3); ("73", 2); ("542", 2); ("4", 2); ("372", 2); ("347", 2); ("345", 2); ("331", 2); ("33", 2); ("3", 2); ("231", 2); ("161", 2); ("14", 2); ("12", 2); ("11", 2); ("105", 2); ("10", 2); ("1", 2); ("241", 1); ("230", 1); ("226", 1); ("187", 1); ("184", 1); ("182", 1); ("156", 1); ("148", 1); ("125", 1); ("118", 1)])
+
+
+
+(* Problem 22 *)
+let () = assert(
+    top_three_routes = ["E Line"; "C Line"; "7"])
+
+(* Problem 23 *)
+let () = assert(
+    ud_route_histogram = [("49", 2); ("48", 2); ("44", 2); ("70", 1); ("67", 1); ("65", 1); ("45", 1); ("255", 1)])
+
+(* Problem 24 *)
+let () = assert(
+    top_three_ud_routes = ["49"; "48"; "44"])
+
+(* Problem 25 *)
+let () = assert( (List.length all_fourty_fours) = 6 )
 
 (*
 

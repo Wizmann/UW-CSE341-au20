@@ -1,7 +1,5 @@
 (**** CSE341, Homework 2, CHALLENGE PROBLEMS: parsing JSON values ****)
 
-#use "hw2.ml";;
-
 (* The main assignment used pre-parsed JSON data, but now we will
    implement a parser for JSON. The course staff's solution to this
    section was used to create the pre-parsed data used earlier. With
@@ -75,7 +73,7 @@ type token =
 let string_of_token (t : token) : string =
 match t with
   NumLit s ->  s
-| StringLit s -> quote_string s
+| StringLit s -> "\"" ^ s ^ "\""
 | FalseTok -> "false"
 | TrueTok -> "true"
 | NullTok -> "null"
@@ -85,6 +83,15 @@ match t with
 | RBracket -> "]"
 | Comma -> ","
 | Colon -> ":"
+
+type json =
+    Num of float
+  | String of string
+  | False
+  | True
+  | Null
+  | Array of json list
+  | Object of (string * json) list
 
 (* helper function that converts a character to a string *)
 let char_to_string = String.make 1
@@ -144,12 +151,16 @@ let lexical_error msg = raise (LexicalError ("Lexical error: " ^ msg))
          function to recursively look for the closing double quote,
          returning the string of characters in between, and the remainder.
 *)
-let consume_string_literal (cs : char list) : string * char list =
-  (* TODO: add about 10 lines of code to this function, and edit the "failwith" line below. *)
+let rec consume_string_literal_helper ((cs : char list), (result: string)) : string * char list =
   match cs with
-    '\"' :: cs -> failwith "consume_string_literal should now call a helper function to consume rest of string"
-  | _ -> lexical_error "Expecting string literal."
+  | [] -> lexical_error "Expecting string literal, the list has no closing double quote."
+  | '\"' :: cs -> (result, cs)
+  | hd :: tl -> consume_string_literal_helper(tl, result ^ (char_to_string hd))
 
+let consume_string_literal (cs : char list) : string * char list =
+  match cs with
+  | '\"' :: cs -> consume_string_literal_helper(cs, "")
+  | _ -> lexical_error "Expecting string literal, no string literal at the beginning of the given character list."
 
 (* Challenge Problem C2: Write a consumer for the keywords true, false, and null.
 

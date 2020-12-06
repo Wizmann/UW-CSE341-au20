@@ -247,11 +247,17 @@ let () = assert(
 (* Problem 25 *)
 let () = assert( (List.length all_fourty_fours) = 6 )
 
+(* ---------Challenge Problems------------- *)
+
+(* Problem C1 *)
+
+let () = assert(
+    consume_string_literal (char_list_of_string "\"foo\" : true") = ("foo", [' '; ':'; ' '; 't'; 'r'; 'u'; 'e']))
+
 (*
 
 (* Commented out tests for challenge problems *)
 
-let testC1 = consume_string_literal (char_list_of_string "\"foo\" : true") = ("foo", [' '; ':'; ' '; 't'; 'r'; 'u'; 'e'])
 
 let testC2 = consume_keyword (char_list_of_string "false foo") = (FalseTok, [' '; 'f'; 'o'; 'o'])
 

@@ -38,8 +38,8 @@ let sort ls = List.sort compare ls
 #print_length 3;;
 
 #use "parsed_small_bus.ml";;
-#use "parsed_medium_bus.ml";;
-#use "parsed_complete_bus.ml";;
+(* #use "parsed_medium_bus.ml";; *)
+(* #use "parsed_complete_bus.ml";; *)
 
 ;;
 #print_depth 10;;

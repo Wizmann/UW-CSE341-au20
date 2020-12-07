@@ -1,0 +1,2509 @@
+{
+  "header": {
+    "gtfs_realtime_version": "2.0",
+    "incrementality": 0,
+    "timestamp": 1602370000
+  },
+  "entity": [
+    {
+      "vehicle": {
+        "trip": {
+          "route_num": "107",
+          "route": "Renton Transit Center - Rainier Beach",
+          "atrip_id": "47803655",
+          "direction_id": 1,
+          "start_date": "20201010",
+          "schedule_relationship": "SCHEDULED"
+        },
+        "vehicle": {
+          "id": "3702",
+          "label": "3702"
+        },
+        "position": {
+          "latitude": 47.5501,
+          "longitude": -122.313
+        },
+        "current_stop_sequence": 470,
+        "stop_id": "41780",
+        "current_status": "IN_TRANSIT_TO",
+        "timestamp": 1602370000
+      },
+      "id": "1602365554_3702"
+    },
+    {
+      "vehicle": {
+        "trip": {
+          "route_num": "107",
+          "route": "Renton Transit Center - Rainier Beach",
+          "atrip_id": "47803657",
+          "direction_id": 0,
+          "start_date": "20201010",
+          "schedule_relationship": "SCHEDULED"
+        },
+        "vehicle": {
+          "id": "3713",
+          "label": "3713"
+        },
+        "position": {
+          "latitude": 47.5205,
+          "longitude": -122.27
+        },
+        "current_stop_sequence": 256,
+        "stop_id": "55226",
+        "current_status": "IN_TRANSIT_TO",
+        "timestamp": 1602370000
+      },
+      "id": "1602365554_3713"
+    },
+    {
+      "vehicle": {
+        "trip": {
+          "route_num": "107",
+          "route": "Renton Transit Center - Rainier Beach",
+          "atrip_id": "47803658",
+          "direction_id": 1,
+          "start_date": "20201010",
+          "schedule_relationship": "SCHEDULED"
+        },
+        "vehicle": {
+          "id": "3700",
+          "label": "3700"
+        },
+        "position": {
+          "latitude": 47.4983,
+          "longitude": -122.264
+        },
+        "current_stop_sequence": 203,
+        "stop_id": "55395",
+        "current_status": "IN_TRANSIT_TO",
+        "timestamp": 1602370000
+      },
+      "id": "1602365554_3700"
+    },
+    {
+      "vehicle": {
+        "trip": {
+          "route_num": "11",
+          "route": "Madison Park - Capitol Hill - Downtown Seattle",
+          "atrip_id": "47418794",
+          "direction_id": 0,
+          "start_date": "20201010",
+          "schedule_relationship": "SCHEDULED"
+        },
+        "vehicle": {
+          "id": "7081",
+          "label": "7081"
+        },
+        "position": {
+          "latitude": 47.6152,
+          "longitude": -122.325
+        },
+        "current_stop_sequence": 52,
+        "stop_id": "11150",
+        "current_status": "IN_TRANSIT_TO",
+        "timestamp": 1602370000
+      },
+      "id": "1602365554_7081"
+    },
+    {
+      "vehicle": {
+        "trip": {
+          "route_num": "11",
+          "route": "Madison Park - Capitol Hill - Downtown Seattle",
+          "atrip_id": "47418856",
+          "direction_id": 1,
+          "start_date": "20201010",
+          "schedule_relationship": "SCHEDULED"
+        },
+        "vehicle": {
+          "id": "7098",
+          "label": "7098"
+        },
+        "position": {
+          "latitude": 47.6231,
+          "longitude": -122.297
+        },
+        "current_stop_sequence": 51,
+        "stop_id": "12340",
+        "current_status": "IN_TRANSIT_TO",
+        "timestamp": 1602370000
+      },
+      "id": "1602365554_7098"
+    },
+    {
+      "vehicle": {
+        "trip": {
+          "route_num": "125",
+          "route": "Westwood Vill - S Seattle Coll - Downtown Seattle",
+          "atrip_id": "47382195",
+          "direction_id": 0,
+          "start_date": "20201010",
+          "schedule_relationship": "SCHEDULED"
+        },
+        "vehicle": {
+          "id": "7121",
+          "label": "7121"
+        },
+        "position": {
+          "latitude": 47.6071,
+          "longitude": -122.335
+        },
+        "current_stop_sequence": 208,
+        "stop_id": "578",
+        "current_status": "IN_TRANSIT_TO",
+        "timestamp": 1602370000
+      },
+      "id": "1602365554_7121"
+    },
+    {
+      "vehicle": {
+        "trip": {
+          "route_num": "128",
+          "route": "Southcenter - Alaska Junction - Admiral District",
+          "atrip_id": "47805231",
+          "direction_id": 1,
+          "start_date": "20201010",
+          "schedule_relationship": "SCHEDULED"
+        },
+        "vehicle": {
+          "id": "7120",
+          "label": "7120"
+        },
+        "position": {
+          "latitude": 47.474,
+          "longitude": -122.281
+        },
+        "current_stop_sequence": 464,
+        "stop_id": "41237",
+        "current_status": "IN_TRANSIT_TO",
+        "timestamp": 1602370000
+      },
+      "id": "1602365554_7120"
+    },
+    {
+      "vehicle": {
+        "trip": {
+          "route_num": "128",
+          "route": "Southcenter - Alaska Junction - Admiral District",
+          "atrip_id": "47805232",
+          "direction_id": 1,
+          "start_date": "20201010",
+          "schedule_relationship": "SCHEDULED"
+        },
+        "vehicle": {
+          "id": "7046",
+          "label": "7046"
+        },
+        "position": {
+          "latitude": 47.5173,
+          "longitude": -122.351
+        },
+        "current_stop_sequence": 191,
+        "stop_id": "21090",
+        "current_status": "IN_TRANSIT_TO",
+        "timestamp": 1602370000
+      },
+      "id": "1602365554_7046"
+    },
+    {
+      "vehicle": {
+        "trip": {
+          "route_num": "128",
+          "route": "Southcenter - Alaska Junction - Admiral District",
+          "atrip_id": "47805233",
+          "direction_id": 1,
+          "start_date": "20201010",
+          "schedule_relationship": "SCHEDULED"
+        },
+        "vehicle": {
+          "id": "7049",
+          "label": "7049"
+        },
+        "position": {
+          "latitude": 47.5809,
+          "longitude": -122.387
+        },
+        "current_stop_sequence": 10,
+        "stop_id": "31930",
+        "current_status": "IN_TRANSIT_TO",
+        "timestamp": 1602370000
+      },
+      "id": "1602365554_7049"
+    },
+    {
+      "vehicle": {
+        "trip": {
+          "route_num": "128",
+          "route": "Southcenter - Alaska Junction - Admiral District",
+          "atrip_id": "47805266",
+          "direction_id": 0,
+          "start_date": "20201010",
+          "schedule_relationship": "SCHEDULED"
+        },
+        "vehicle": {
+          "id": "7024",
+          "label": "7024"
+        },
+        "position": {
+          "latitude": 47.5447,
+          "longitude": -122.377
+        },
+        "current_stop_sequence": 452,
+        "stop_id": "36370",
+        "current_status": "IN_TRANSIT_TO",
+        "timestamp": 1602370000
+      },
+      "id": "1602365554_7024"
+    },
+    {
+      "vehicle": {
+        "trip": {
+          "route_num": "128",
+          "route": "Southcenter - Alaska Junction - Admiral District",
+          "atrip_id": "47805267",
+          "direction_id": 0,
+          "start_date": "20201010",
+          "schedule_relationship": "SCHEDULED"
+        },
+        "vehicle": {
+          "id": "7051",
+          "label": "7051"
+        },
+        "position": {
+          "latitude": 47.4788,
+          "longitude": -122.294
+        },
+        "current_stop_sequence": 166,
+        "stop_id": "41135",
+        "current_status": "IN_TRANSIT_TO",
+        "timestamp": 1602370000
+      },
+      "id": "1602365554_7051"
+    },
+    {
+      "vehicle": {
+        "trip": {
+          "route_num": "128",
+          "route": "Southcenter - Alaska Junction - Admiral District",
+          "atrip_id": "47805268",
+          "direction_id": 0,
+          "start_date": "20201010",
+          "schedule_relationship": "SCHEDULED"
+        },
+        "vehicle": {
+          "id": "7043",
+          "label": "7043"
+        },
+        "position": {
+          "latitude": 47.4613,
+          "longitude": -122.254
+        },
+        "current_stop_sequence": 22,
+        "stop_id": "40823",
+        "current_status": "IN_TRANSIT_TO",
+        "timestamp": 1602370000
+      },
+      "id": "1602365554_7043"
+    },
+    {
+      "vehicle": {
+        "trip": {
+          "route_num": "13",
+          "route": "Seattle Pacific - Downtown Seattle",
+          "atrip_id": "49792915",
+          "direction_id": 1,
+          "start_date": "20201010",
+          "schedule_relationship": "SCHEDULED"
+        },
+        "vehicle": {
+          "id": "7133",
+          "label": "7133"
+        },
+        "position": {
+          "latitude": 47.6192,
+          "longitude": -122.357
+        },
+        "current_stop_sequence": 100,
+        "stop_id": "2244",
+        "current_status": "IN_TRANSIT_TO",
+        "timestamp": 1602370000
+      },
+      "id": "1602365554_7133"
+    },
+    {
+      "vehicle": {
+        "trip": {
+          "route_num": "13",
+          "route": "Seattle Pacific - Downtown Seattle",
+          "atrip_id": "49792972",
+          "direction_id": 0,
+          "start_date": "20201010",
+          "schedule_relationship": "SCHEDULED"
+        },
+        "vehicle": {
+          "id": "7127",
+          "label": "7127"
+        },
+        "position": {
+          "latitude": 47.6366,
+          "longitude": -122.357
+        },
+        "current_stop_sequence": 126,
+        "stop_id": "4490",
+        "current_status": "IN_TRANSIT_TO",
+        "timestamp": 1602370000
+      },
+      "id": "1602365554_7127"
+    },
+    {
+      "vehicle": {
+        "trip": {
+          "route_num": "13",
+          "route": "Seattle Pacific - Downtown Seattle",
+          "atrip_id": "49793237",
+          "direction_id": 1,
+          "start_date": "20201010",
+          "schedule_relationship": "SCHEDULED"
+        },
+        "vehicle": {
+          "id": "7025",
+          "label": "7025"
+        },
+        "position": {
+          "latitude": 47.6243,
+          "longitude": -122.357
+        },
+        "current_stop_sequence": 84,
+        "stop_id": "2672",
+        "current_status": "IN_TRANSIT_TO",
+        "timestamp": 1602370000
+      },
+      "id": "1602365554_7025"
+    },
+    {
+      "vehicle": {
+        "trip": {
+          "route_num": "132",
+          "route": "Burien TC - South Park - Downtown Seattle",
+          "atrip_id": "47380860",
+          "direction_id": 1,
+          "start_date": "20201010",
+          "schedule_relationship": "SCHEDULED"
+        },
+        "vehicle": {
+          "id": "8044",
+          "label": "8044"
+        },
+        "position": {
+          "latitude": 47.545,
+          "longitude": -122.331
+        },
+        "current_stop_sequence": 381,
+        "stop_id": "45770",
+        "current_status": "IN_TRANSIT_TO",
+        "timestamp": 1602370000
+      },
+      "id": "1602365554_8044"
+    },
+    {
+      "vehicle": {
+        "trip": {
+          "route_num": "132",
+          "route": "Burien TC - South Park - Downtown Seattle",
+          "atrip_id": "47380861",
+          "direction_id": 1,
+          "start_date": "20201010",
+          "schedule_relationship": "SCHEDULED"
+        },
+        "vehicle": {
+          "id": "8025",
+          "label": "8025"
+        },
+        "position": {
+          "latitude": 47.4886,
+          "longitude": -122.31
+        },
+        "current_stop_sequence": 106,
+        "stop_id": "49450",
+        "current_status": "IN_TRANSIT_TO",
+        "timestamp": 1602370000
+      },
+      "id": "1602365554_8025"
+    },
+    {
+      "vehicle": {
+        "trip": {
+          "route_num": "132",
+          "route": "Burien TC - South Park - Downtown Seattle",
+          "atrip_id": "47380967",
+          "direction_id": 0,
+          "start_date": "20201010",
+          "schedule_relationship": "SCHEDULED"
+        },
+        "vehicle": {
+          "id": "8064",
+          "label": "8064"
+        },
+        "position": {
+          "latitude": 47.5264,
+          "longitude": -122.319
+        },
+        "current_stop_sequence": 263,
+        "stop_id": "32140",
+        "current_status": "IN_TRANSIT_TO",
+        "timestamp": 1602370000
+      },
+      "id": "1602365554_8064"
+    },
+    {
+      "vehicle": {
+        "trip": {
+          "route_num": "132",
+          "route": "Burien TC - South Park - Downtown Seattle",
+          "atrip_id": "47380968",
+          "direction_id": 0,
+          "start_date": "20201010",
+          "schedule_relationship": "SCHEDULED"
+        },
+        "vehicle": {
+          "id": "8003",
+          "label": "8003"
+        },
+        "position": {
+          "latitude": 47.602,
+          "longitude": -122.331
+        },
+        "current_stop_sequence": 46,
+        "stop_id": "515",
+        "current_status": "IN_TRANSIT_TO",
+        "timestamp": 1602370000
+      },
+      "id": "1602365554_8003"
+    },
+    {
+      "vehicle": {
+        "trip": {
+          "route_num": "150",
+          "route": "Kent Station - Southcenter - Downtown Seattle",
+          "atrip_id": "49785244",
+          "direction_id": 0,
+          "start_date": "20201010",
+          "schedule_relationship": "SCHEDULED"
+        },
+        "vehicle": {
+          "id": "8149",
+          "label": "8149"
+        },
+        "position": {
+          "latitude": 47.5054,
+          "longitude": -122.28
+        },
+        "current_stop_sequence": 215,
+        "stop_id": "80720",
+        "current_status": "IN_TRANSIT_TO",
+        "timestamp": 1602370000
+      },
+      "id": "1602365554_8149"
+    },
+    {
+      "vehicle": {
+        "trip": {
+          "route_num": "150",
+          "route": "Kent Station - Southcenter - Downtown Seattle",
+          "atrip_id": "49785256",
+          "direction_id": 0,
+          "start_date": "20201010",
+          "schedule_relationship": "SCHEDULED"
+        },
+        "vehicle": {
+          "id": "6986",
+          "label": "6986"
+        },
+        "position": {
+          "latitude": 47.3848,
+          "longitude": -122.232
+        },
+        "current_stop_sequence": 521,
+        "stop_id": "57455",
+        "current_status": "IN_TRANSIT_TO",
+        "timestamp": 1602370000
+      },
+      "id": "1602365554_6986"
+    },
+    {
+      "vehicle": {
+        "trip": {
+          "route_num": "150",
+          "route": "Kent Station - Southcenter - Downtown Seattle",
+          "atrip_id": "49785258",
+          "direction_id": 0,
+          "start_date": "20201010",
+          "schedule_relationship": "SCHEDULED"
+        },
+        "vehicle": {
+          "id": "6893",
+          "label": "6893"
+        },
+        "position": {
+          "latitude": 47.4552,
+          "longitude": -122.254
+        },
+        "current_stop_sequence": 301,
+        "stop_id": "59320",
+        "current_status": "IN_TRANSIT_TO",
+        "timestamp": 1602370000
+      },
+      "id": "1602365554_6893"
+    },
+    {
+      "vehicle": {
+        "trip": {
+          "route_num": "150",
+          "route": "Kent Station - Southcenter - Downtown Seattle",
+          "atrip_id": "49785289",
+          "direction_id": 1,
+          "start_date": "20201010",
+          "schedule_relationship": "SCHEDULED"
+        },
+        "vehicle": {
+          "id": "8133",
+          "label": "8133"
+        },
+        "position": {
+          "latitude": 47.3986,
+          "longitude": -122.249
+        },
+        "current_stop_sequence": 95,
+        "stop_id": "79236",
+        "current_status": "IN_TRANSIT_TO",
+        "timestamp": 1602370000
+      },
+      "id": "1602365554_8133"
+    },
+    {
+      "vehicle": {
+        "trip": {
+          "route_num": "150",
+          "route": "Kent Station - Southcenter - Downtown Seattle",
+          "atrip_id": "49785291",
+          "direction_id": 1,
+          "start_date": "20201010",
+          "schedule_relationship": "SCHEDULED"
+        },
+        "vehicle": {
+          "id": "8137",
+          "label": "8137"
+        },
+        "position": {
+          "latitude": 47.6061,
+          "longitude": -122.333
+        },
+        "current_stop_sequence": 531,
+        "stop_id": "690",
+        "current_status": "IN_TRANSIT_TO",
+        "timestamp": 1602370000
+      },
+      "id": "1602365554_8137"
+    },
+    {
+      "vehicle": {
+        "trip": {
+          "route_num": "150",
+          "route": "Kent Station - Southcenter - Downtown Seattle",
+          "atrip_id": "49785298",
+          "direction_id": 0,
+          "start_date": "20201010",
+          "schedule_relationship": "SCHEDULED"
+        },
+        "vehicle": {
+          "id": "6884",
+          "label": "6884"
+        },
+        "position": {
+          "latitude": 47.6025,
+          "longitude": -122.333
+        },
+        "current_stop_sequence": 26,
+        "stop_id": "390",
+        "current_status": "IN_TRANSIT_TO",
+        "timestamp": 1602370000
+      },
+      "id": "1602365554_6884"
+    },
+    {
+      "vehicle": {
+        "trip": {
+          "route_num": "150",
+          "route": "Kent Station - Southcenter - Downtown Seattle",
+          "atrip_id": "49785323",
+          "direction_id": 1,
+          "start_date": "20201010",
+          "schedule_relationship": "SCHEDULED"
+        },
+        "vehicle": {
+          "id": "8134",
+          "label": "8134"
+        },
+        "position": {
+          "latitude": 47.4579,
+          "longitude": -122.254
+        },
+        "current_stop_sequence": 220,
+        "stop_id": "59316",
+        "current_status": "IN_TRANSIT_TO",
+        "timestamp": 1602370000
+      },
+      "id": "1602365554_8134"
+    },
+    {
+      "vehicle": {
+        "trip": {
+          "route_num": "150",
+          "route": "Kent Station - Southcenter - Downtown Seattle",
+          "atrip_id": "49785324",
+          "direction_id": 1,
+          "start_date": "20201010",
+          "schedule_relationship": "SCHEDULED"
+        },
+        "vehicle": {
+          "id": "6874",
+          "label": "6874"
+        },
+        "position": {
+          "latitude": 47.4933,
+          "longitude": -122.266
+        },
+        "current_stop_sequence": 475,
+        "stop_id": "99252",
+        "current_status": "IN_TRANSIT_TO",
+        "timestamp": 1602370000
+      },
+      "id": "1602365554_6874"
+    },
+    {
+      "vehicle": {
+        "trip": {
+          "route_num": "150",
+          "route": "Kent Station - Southcenter - Downtown Seattle",
+          "atrip_id": "49785345",
+          "direction_id": 0,
+          "start_date": "20201010",
+          "schedule_relationship": "SCHEDULED"
+        },
+        "vehicle": {
+          "id": "6826",
+          "label": "6826"
+        },
+        "position": {
+          "latitude": 47.3867,
+          "longitude": -122.234
+        },
+        "current_stop_sequence": 521,
+        "stop_id": "57455",
+        "current_status": "IN_TRANSIT_TO",
+        "timestamp": 1602370000
+      },
+      "id": "1602365554_6826"
+    },
+    {
+      "vehicle": {
+        "trip": {
+          "route_num": "181",
+          "route": "Twin Lakes P&R - Auburn Station - Green River Coll",
+          "atrip_id": "47804110",
+          "direction_id": 1,
+          "start_date": "20201010",
+          "schedule_relationship": "SCHEDULED"
+        },
+        "vehicle": {
+          "id": "7433",
+          "label": "7433"
+        },
+        "position": {
+          "latitude": 47.3049,
+          "longitude": -122.231
+        },
+        "current_stop_sequence": 216,
+        "stop_id": "81200",
+        "current_status": "IN_TRANSIT_TO",
+        "timestamp": 1602370000
+      },
+      "id": "1602365554_7433"
+    },
+    {
+      "vehicle": {
+        "trip": {
+          "route_num": "181",
+          "route": "Twin Lakes P&R - Auburn Station - Green River Coll",
+          "atrip_id": "47804111",
+          "direction_id": 0,
+          "start_date": "20201010",
+          "schedule_relationship": "SCHEDULED"
+        },
+        "vehicle": {
+          "id": "7459",
+          "label": "7459"
+        },
+        "position": {
+          "latitude": 47.3153,
+          "longitude": -122.178
+        },
+        "current_stop_sequence": 564,
+        "stop_id": "59282",
+        "current_status": "IN_TRANSIT_TO",
+        "timestamp": 1602370000
+      },
+      "id": "1602365554_7459"
+    },
+    {
+      "vehicle": {
+        "trip": {
+          "route_num": "181",
+          "route": "Twin Lakes P&R - Auburn Station - Green River Coll",
+          "atrip_id": "47804112",
+          "direction_id": 0,
+          "start_date": "20201010",
+          "schedule_relationship": "SCHEDULED"
+        },
+        "vehicle": {
+          "id": "7489",
+          "label": "7489"
+        },
+        "position": {
+          "latitude": 47.3045,
+          "longitude": -122.274
+        },
+        "current_stop_sequence": 326,
+        "stop_id": "57804",
+        "current_status": "IN_TRANSIT_TO",
+        "timestamp": 1602370000
+      },
+      "id": "1602365554_7489"
+    },
+    {
+      "vehicle": {
+        "trip": {
+          "route_num": "181",
+          "route": "Twin Lakes P&R - Auburn Station - Green River Coll",
+          "atrip_id": "47804113",
+          "direction_id": 1,
+          "start_date": "20201010",
+          "schedule_relationship": "SCHEDULED"
+        },
+        "vehicle": {
+          "id": "7453",
+          "label": "7453"
+        },
+        "position": {
+          "latitude": 47.3152,
+          "longitude": -122.33
+        },
+        "current_stop_sequence": 531,
+        "stop_id": "83784",
+        "current_status": "IN_TRANSIT_TO",
+        "timestamp": 1602370000
+      },
+      "id": "1602365554_7453"
+    },
+    {
+      "vehicle": {
+        "trip": {
+          "route_num": "183",
+          "route": "Federal Way TC - Star Lake - Kent Station",
+          "atrip_id": "49784873",
+          "direction_id": 0,
+          "start_date": "20201010",
+          "schedule_relationship": "SCHEDULED"
+        },
+        "vehicle": {
+          "id": "7477",
+          "label": "7477"
+        },
+        "position": {
+          "latitude": 47.3784,
+          "longitude": -122.269
+        },
+        "current_stop_sequence": 60,
+        "stop_id": "58781",
+        "current_status": "IN_TRANSIT_TO",
+        "timestamp": 1602370000
+      },
+      "id": "1602365554_7477"
+    },
+    {
+      "vehicle": {
+        "trip": {
+          "route_num": "183",
+          "route": "Federal Way TC - Star Lake - Kent Station",
+          "atrip_id": "49784882",
+          "direction_id": 1,
+          "start_date": "20201010",
+          "schedule_relationship": "SCHEDULED"
+        },
+        "vehicle": {
+          "id": "7447",
+          "label": "7447"
+        },
+        "position": {
+          "latitude": 47.3558,
+          "longitude": -122.302
+        },
+        "current_stop_sequence": 243,
+        "stop_id": "50733",
+        "current_status": "IN_TRANSIT_TO",
+        "timestamp": 1602370000
+      },
+      "id": "1602365554_7447"
+    },
+    {
+      "vehicle": {
+        "trip": {
+          "route_num": "183",
+          "route": "Federal Way TC - Star Lake - Kent Station",
+          "atrip_id": "49785729",
+          "direction_id": 0,
+          "start_date": "20201010",
+          "schedule_relationship": "SCHEDULED"
+        },
+        "vehicle": {
+          "id": "7446",
+          "label": "7446"
+        },
+        "position": {
+          "latitude": 47.3225,
+          "longitude": -122.297
+        },
+        "current_stop_sequence": 434,
+        "stop_id": "80458",
+        "current_status": "IN_TRANSIT_TO",
+        "timestamp": 1602370000
+      },
+      "id": "1602365554_7446"
+    },
+    {
+      "vehicle": {
+        "trip": {
+          "route_num": "2",
+          "route": "Seattle Pacific - Downtown Seattle - Madrona Park",
+          "atrip_id": "49792921",
+          "direction_id": 0,
+          "start_date": "20201010",
+          "schedule_relationship": "SCHEDULED"
+        },
+        "vehicle": {
+          "id": "7030",
+          "label": "7030"
+        },
+        "position": {
+          "latitude": 47.612,
+          "longitude": -122.282
+        },
+        "current_stop_sequence": 353,
+        "stop_id": "2850",
+        "current_status": "IN_TRANSIT_TO",
+        "timestamp": 1602370000
+      },
+      "id": "1602365554_7030"
+    },
+    {
+      "vehicle": {
+        "trip": {
+          "route_num": "2",
+          "route": "Seattle Pacific - Downtown Seattle - Madrona Park",
+          "atrip_id": "49792923",
+          "direction_id": 1,
+          "start_date": "20201010",
+          "schedule_relationship": "SCHEDULED"
+        },
+        "vehicle": {
+          "id": "7011",
+          "label": "7011"
+        },
+        "position": {
+          "latitude": 47.6096,
+          "longitude": -122.338
+        },
+        "current_stop_sequence": 215,
+        "stop_id": "575",
+        "current_status": "IN_TRANSIT_TO",
+        "timestamp": 1602370000
+      },
+      "id": "1602365554_7011"
+    },
+    {
+      "vehicle": {
+        "trip": {
+          "route_num": "2",
+          "route": "Seattle Pacific - Downtown Seattle - Madrona Park",
+          "atrip_id": "49792924",
+          "direction_id": 0,
+          "start_date": "20201010",
+          "schedule_relationship": "SCHEDULED"
+        },
+        "vehicle": {
+          "id": "7066",
+          "label": "7066"
+        },
+        "position": {
+          "latitude": 47.6124,
+          "longitude": -122.341
+        },
+        "current_stop_sequence": 104,
+        "stop_id": "420",
+        "current_status": "IN_TRANSIT_TO",
+        "timestamp": 1602370000
+      },
+      "id": "1602365554_7066"
+    },
+    {
+      "vehicle": {
+        "trip": {
+          "route_num": "2",
+          "route": "Seattle Pacific - Downtown Seattle - Madrona Park",
+          "atrip_id": "49792940",
+          "direction_id": 0,
+          "start_date": "20201010",
+          "schedule_relationship": "SCHEDULED"
+        },
+        "vehicle": {
+          "id": "7094",
+          "label": "7094"
+        },
+        "position": {
+          "latitude": 47.6427,
+          "longitude": -122.366
+        },
+        "current_stop_sequence": 1,
+        "stop_id": "2550",
+        "current_status": "IN_TRANSIT_TO",
+        "timestamp": 1602370000
+      },
+      "id": "1602365554_7094"
+    },
+    {
+      "vehicle": {
+        "trip": {
+          "route_num": "21",
+          "route": "Arbor Heights-Westwood Village-Downtown Seattle",
+          "atrip_id": "47418280",
+          "direction_id": 0,
+          "start_date": "20201010",
+          "schedule_relationship": "SCHEDULED"
+        },
+        "vehicle": {
+          "id": "8249",
+          "label": "8249"
+        },
+        "position": {
+          "latitude": 47.5211,
+          "longitude": -122.376
+        },
+        "current_stop_sequence": 254,
+        "stop_id": "22557",
+        "current_status": "IN_TRANSIT_TO",
+        "timestamp": 1602370000
+      },
+      "id": "1602365554_8249"
+    },
+    {
+      "vehicle": {
+        "trip": {
+          "route_num": "21",
+          "route": "Arbor Heights-Westwood Village-Downtown Seattle",
+          "atrip_id": "47418292",
+          "direction_id": 1,
+          "start_date": "20201010",
+          "schedule_relationship": "SCHEDULED"
+        },
+        "vehicle": {
+          "id": "8261",
+          "label": "8261"
+        },
+        "position": {
+          "latitude": 47.5637,
+          "longitude": -122.376
+        },
+        "current_stop_sequence": 73,
+        "stop_id": "22820",
+        "current_status": "IN_TRANSIT_TO",
+        "timestamp": 1602370000
+      },
+      "id": "1602365554_8261"
+    },
+    {
+      "vehicle": {
+        "trip": {
+          "route_num": "21",
+          "route": "Arbor Heights-Westwood Village-Downtown Seattle",
+          "atrip_id": "47418294",
+          "direction_id": 0,
+          "start_date": "20201010",
+          "schedule_relationship": "SCHEDULED"
+        },
+        "vehicle": {
+          "id": "8252",
+          "label": "8252"
+        },
+        "position": {
+          "latitude": 47.6078,
+          "longitude": -122.336
+        },
+        "current_stop_sequence": 30,
+        "stop_id": "468",
+        "current_status": "IN_TRANSIT_TO",
+        "timestamp": 1602370000
+      },
+      "id": "1602365554_8252"
+    },
+    {
+      "vehicle": {
+        "trip": {
+          "route_num": "21",
+          "route": "Arbor Heights-Westwood Village-Downtown Seattle",
+          "atrip_id": "47418305",
+          "direction_id": 0,
+          "start_date": "20201010",
+          "schedule_relationship": "SCHEDULED"
+        },
+        "vehicle": {
+          "id": "8250",
+          "label": "8250"
+        },
+        "position": {
+          "latitude": 47.5716,
+          "longitude": -122.366
+        },
+        "current_stop_sequence": 182,
+        "stop_id": "19898",
+        "current_status": "IN_TRANSIT_TO",
+        "timestamp": 1602370000
+      },
+      "id": "1602365554_8250"
+    },
+    {
+      "vehicle": {
+        "trip": {
+          "route_num": "221",
+          "route": "Education Hill - Crossroads - Eastgate",
+          "atrip_id": "40775296",
+          "direction_id": 1,
+          "start_date": "20201010",
+          "schedule_relationship": "SCHEDULED"
+        },
+        "vehicle": {
+          "id": "7373",
+          "label": "7373"
+        },
+        "position": {
+          "latitude": 47.7039,
+          "longitude": -122.119
+        },
+        "current_stop_sequence": 522,
+        "stop_id": "73539",
+        "current_status": "IN_TRANSIT_TO",
+        "timestamp": 1602370000
+      },
+      "id": "1602365554_7373"
+    },
+    {
+      "vehicle": {
+        "trip": {
+          "route_num": "221",
+          "route": "Education Hill - Crossroads - Eastgate",
+          "atrip_id": "40775297",
+          "direction_id": 1,
+          "start_date": "20201010",
+          "schedule_relationship": "SCHEDULED"
+        },
+        "vehicle": {
+          "id": "7418",
+          "label": "7418"
+        },
+        "position": {
+          "latitude": 47.617,
+          "longitude": -122.13
+        },
+        "current_stop_sequence": 209,
+        "stop_id": "67460",
+        "current_status": "IN_TRANSIT_TO",
+        "timestamp": 1602370000
+      },
+      "id": "1602365554_7418"
+    },
+    {
+      "vehicle": {
+        "trip": {
+          "route_num": "221",
+          "route": "Education Hill - Crossroads - Eastgate",
+          "atrip_id": "40775308",
+          "direction_id": 0,
+          "start_date": "20201010",
+          "schedule_relationship": "SCHEDULED"
+        },
+        "vehicle": {
+          "id": "7340",
+          "label": "7340"
+        },
+        "position": {
+          "latitude": 47.5963,
+          "longitude": -122.116
+        },
+        "current_stop_sequence": 258,
+        "stop_id": "66900",
+        "current_status": "IN_TRANSIT_TO",
+        "timestamp": 1602370000
+      },
+      "id": "1602365554_7340"
+    },
+    {
+      "vehicle": {
+        "trip": {
+          "route_num": "221",
+          "route": "Education Hill - Crossroads - Eastgate",
+          "atrip_id": "40775329",
+          "direction_id": 0,
+          "start_date": "20201010",
+          "schedule_relationship": "SCHEDULED"
+        },
+        "vehicle": {
+          "id": "7363",
+          "label": "7363"
+        },
+        "position": {
+          "latitude": 47.6767,
+          "longitude": -122.125
+        },
+        "current_stop_sequence": 13,
+        "stop_id": "71970",
+        "current_status": "IN_TRANSIT_TO",
+        "timestamp": 1602370000
+      },
+      "id": "1602365554_7363"
+    },
+    {
+      "vehicle": {
+        "trip": {
+          "route_num": "24",
+          "route": "West Magnolia - Downtown Seattle",
+          "atrip_id": "47380358",
+          "direction_id": 1,
+          "start_date": "20201010",
+          "schedule_relationship": "SCHEDULED"
+        },
+        "vehicle": {
+          "id": "8063",
+          "label": "8063"
+        },
+        "position": {
+          "latitude": 47.6541,
+          "longitude": -122.412
+        },
+        "current_stop_sequence": 1,
+        "stop_id": "20530",
+        "current_status": "IN_TRANSIT_TO",
+        "timestamp": 1602370000
+      },
+      "id": "1602365554_8063"
+    },
+    {
+      "vehicle": {
+        "trip": {
+          "route_num": "24",
+          "route": "West Magnolia - Downtown Seattle",
+          "atrip_id": "47380383",
+          "direction_id": 0,
+          "start_date": "20201010",
+          "schedule_relationship": "SCHEDULED"
+        },
+        "vehicle": {
+          "id": "8078",
+          "label": "8078"
+        },
+        "position": {
+          "latitude": 47.6522,
+          "longitude": -122.411
+        },
+        "current_stop_sequence": 339,
+        "stop_id": "20530",
+        "current_status": "IN_TRANSIT_TO",
+        "timestamp": 1602370000
+      },
+      "id": "1602365554_8078"
+    },
+    {
+      "vehicle": {
+        "trip": {
+          "route_num": "24",
+          "route": "West Magnolia - Downtown Seattle",
+          "atrip_id": "47380384",
+          "direction_id": 0,
+          "start_date": "20201010",
+          "schedule_relationship": "SCHEDULED"
+        },
+        "vehicle": {
+          "id": "8065",
+          "label": "8065"
+        },
+        "position": {
+          "latitude": 47.6055,
+          "longitude": -122.334
+        },
+        "current_stop_sequence": 38,
+        "stop_id": "570",
+        "current_status": "IN_TRANSIT_TO",
+        "timestamp": 1602370000
+      },
+      "id": "1602365554_8065"
+    },
+    {
+      "vehicle": {
+        "trip": {
+          "route_num": "240",
+          "route": "Bellevue Transit Center - Renton Transit Center",
+          "atrip_id": "40775431",
+          "direction_id": 0,
+          "start_date": "20201010",
+          "schedule_relationship": "SCHEDULED"
+        },
+        "vehicle": {
+          "id": "7381",
+          "label": "7381"
+        },
+        "position": {
+          "latitude": 47.5344,
+          "longitude": -122.164
+        },
+        "current_stop_sequence": 343,
+        "stop_id": "65287",
+        "current_status": "IN_TRANSIT_TO",
+        "timestamp": 1602370000
+      },
+      "id": "1602365554_7381"
+    },
+    {
+      "vehicle": {
+        "trip": {
+          "route_num": "240",
+          "route": "Bellevue Transit Center - Renton Transit Center",
+          "atrip_id": "40775455",
+          "direction_id": 0,
+          "start_date": "20201010",
+          "schedule_relationship": "SCHEDULED"
+        },
+        "vehicle": {
+          "id": "7371",
+          "label": "7371"
+        },
+        "position": {
+          "latitude": 47.5921,
+          "longitude": -122.164
+        },
+        "current_stop_sequence": 763,
+        "stop_id": "70807",
+        "current_status": "IN_TRANSIT_TO",
+        "timestamp": 1602370000
+      },
+      "id": "1602365554_7371"
+    },
+    {
+      "vehicle": {
+        "trip": {
+          "route_num": "240",
+          "route": "Bellevue Transit Center - Renton Transit Center",
+          "atrip_id": "40775471",
+          "direction_id": 1,
+          "start_date": "20201010",
+          "schedule_relationship": "SCHEDULED"
+        },
+        "vehicle": {
+          "id": "7425",
+          "label": "7425"
+        },
+        "position": {
+          "latitude": 47.5668,
+          "longitude": -122.18
+        },
+        "current_stop_sequence": 323,
+        "stop_id": "65580",
+        "current_status": "IN_TRANSIT_TO",
+        "timestamp": 1602370000
+      },
+      "id": "1602365554_7425"
+    },
+    {
+      "vehicle": {
+        "trip": {
+          "route_num": "255",
+          "route": "Totem Lake TC-Kirkand TC-UW Link Sta-Univ Dist",
+          "atrip_id": "46551194",
+          "direction_id": 0,
+          "start_date": "20201010",
+          "schedule_relationship": "SCHEDULED"
+        },
+        "vehicle": {
+          "id": "8157",
+          "label": "8157"
+        },
+        "position": {
+          "latitude": 47.7112,
+          "longitude": -122.197
+        },
+        "current_stop_sequence": 476,
+        "stop_id": "74079",
+        "current_status": "IN_TRANSIT_TO",
+        "timestamp": 1602370000
+      },
+      "id": "1602365554_8157"
+    },
+    {
+      "vehicle": {
+        "trip": {
+          "route_num": "255",
+          "route": "Totem Lake TC-Kirkand TC-UW Link Sta-Univ Dist",
+          "atrip_id": "46551195",
+          "direction_id": 0,
+          "start_date": "20201010",
+          "schedule_relationship": "SCHEDULED"
+        },
+        "vehicle": {
+          "id": "8170",
+          "label": "8170"
+        },
+        "position": {
+          "latitude": 47.6402,
+          "longitude": -122.218
+        },
+        "current_stop_sequence": 210,
+        "stop_id": "74450",
+        "current_status": "IN_TRANSIT_TO",
+        "timestamp": 1602370000
+      },
+      "id": "1602365554_8170"
+    },
+    {
+      "vehicle": {
+        "trip": {
+          "route_num": "255",
+          "route": "Totem Lake TC-Kirkand TC-UW Link Sta-Univ Dist",
+          "atrip_id": "46551262",
+          "direction_id": 1,
+          "start_date": "20201010",
+          "schedule_relationship": "SCHEDULED"
+        },
+        "vehicle": {
+          "id": "8150",
+          "label": "8150"
+        },
+        "position": {
+          "latitude": 47.6508,
+          "longitude": -122.308
+        },
+        "current_stop_sequence": 462,
+        "stop_id": "29420",
+        "current_status": "IN_TRANSIT_TO",
+        "timestamp": 1602370000
+      },
+      "id": "1602365554_8150"
+    },
+    {
+      "vehicle": {
+        "trip": {
+          "route_num": "255",
+          "route": "Totem Lake TC-Kirkand TC-UW Link Sta-Univ Dist",
+          "atrip_id": "46551263",
+          "direction_id": 1,
+          "start_date": "20201010",
+          "schedule_relationship": "SCHEDULED"
+        },
+        "vehicle": {
+          "id": "8151",
+          "label": "8151"
+        },
+        "position": {
+          "latitude": 47.6496,
+          "longitude": -122.196
+        },
+        "current_stop_sequence": 254,
+        "stop_id": "74441",
+        "current_status": "IN_TRANSIT_TO",
+        "timestamp": 1602370000
+      },
+      "id": "1602365554_8151"
+    },
+    {
+      "vehicle": {
+        "trip": {
+          "route_num": "255",
+          "route": "Totem Lake TC-Kirkand TC-UW Link Sta-Univ Dist",
+          "atrip_id": "46551265",
+          "direction_id": 1,
+          "start_date": "20201010",
+          "schedule_relationship": "SCHEDULED"
+        },
+        "vehicle": {
+          "id": "8173",
+          "label": "8173"
+        },
+        "position": {
+          "latitude": 47.7149,
+          "longitude": -122.182
+        },
+        "current_stop_sequence": 13,
+        "stop_id": "74734",
+        "current_status": "IN_TRANSIT_TO",
+        "timestamp": 1602370000
+      },
+      "id": "1602365554_8173"
+    },
+    {
+      "vehicle": {
+        "trip": {
+          "route_num": "1",
+          "route": "Kinnear - Downtown Seattle",
+          "atrip_id": "49790903",
+          "direction_id": 0,
+          "start_date": "20201010",
+          "schedule_relationship": "SCHEDULED"
+        },
+        "vehicle": {
+          "id": "7135",
+          "label": "7135"
+        },
+        "position": {
+          "latitude": 47.6451,
+          "longitude": -122.37
+        },
+        "current_stop_sequence": 228,
+        "stop_id": "2010",
+        "current_status": "IN_TRANSIT_TO",
+        "timestamp": 1602370000
+      },
+      "id": "1602365554_7135"
+    },
+    {
+      "vehicle": {
+        "trip": {
+          "route_num": "1",
+          "route": "Kinnear - Downtown Seattle",
+          "atrip_id": "49790904",
+          "direction_id": 0,
+          "start_date": "20201010",
+          "schedule_relationship": "SCHEDULED"
+        },
+        "vehicle": {
+          "id": "7044",
+          "label": "7044"
+        },
+        "position": {
+          "latitude": 47.5992,
+          "longitude": -122.327
+        },
+        "current_stop_sequence": 13,
+        "stop_id": "1530",
+        "current_status": "IN_TRANSIT_TO",
+        "timestamp": 1602370000
+      },
+      "id": "1602365554_7044"
+    },
+    {
+      "vehicle": {
+        "trip": {
+          "route_num": "10",
+          "route": "Capitol Hill - Downtown Seattle",
+          "atrip_id": "49775244",
+          "direction_id": 0,
+          "start_date": "20201010",
+          "schedule_relationship": "SCHEDULED"
+        },
+        "vehicle": {
+          "id": "7017",
+          "label": "7017"
+        },
+        "position": {
+          "latitude": 47.6199,
+          "longitude": -122.318
+        },
+        "current_stop_sequence": 73,
+        "stop_id": "29277",
+        "current_status": "IN_TRANSIT_TO",
+        "timestamp": 1602370000
+      },
+      "id": "1602365554_7017"
+    },
+    {
+      "vehicle": {
+        "trip": {
+          "route_num": "10",
+          "route": "Capitol Hill - Downtown Seattle",
+          "atrip_id": "49775271",
+          "direction_id": 1,
+          "start_date": "20201010",
+          "schedule_relationship": "SCHEDULED"
+        },
+        "vehicle": {
+          "id": "7052",
+          "label": "7052"
+        },
+        "position": {
+          "latitude": 47.6199,
+          "longitude": -122.32
+        },
+        "current_stop_sequence": 49,
+        "stop_id": "29266",
+        "current_status": "IN_TRANSIT_TO",
+        "timestamp": 1602370000
+      },
+      "id": "1602365554_7052"
+    },
+    {
+      "vehicle": {
+        "trip": {
+          "route_num": "101",
+          "route": "Renton Transit Center - Downtown Seattle",
+          "atrip_id": "49785245",
+          "direction_id": 0,
+          "start_date": "20201010",
+          "schedule_relationship": "SCHEDULED"
+        },
+        "vehicle": {
+          "id": "6818",
+          "label": "6818"
+        },
+        "position": {
+          "latitude": 47.4777,
+          "longitude": -122.228
+        },
+        "current_stop_sequence": 254,
+        "stop_id": "79600",
+        "current_status": "IN_TRANSIT_TO",
+        "timestamp": 1602370000
+      },
+      "id": "1602365554_6818"
+    },
+    {
+      "vehicle": {
+        "trip": {
+          "route_num": "101",
+          "route": "Renton Transit Center - Downtown Seattle",
+          "atrip_id": "49785286",
+          "direction_id": 0,
+          "start_date": "20201010",
+          "schedule_relationship": "SCHEDULED"
+        },
+        "vehicle": {
+          "id": "6954",
+          "label": "6954"
+        },
+        "position": {
+          "latitude": 47.6089,
+          "longitude": -122.336
+        },
+        "current_stop_sequence": 15,
+        "stop_id": "340",
+        "current_status": "IN_TRANSIT_TO",
+        "timestamp": 1602370000
+      },
+      "id": "1602365554_6954"
+    },
+    {
+      "vehicle": {
+        "trip": {
+          "route_num": "101",
+          "route": "Renton Transit Center - Downtown Seattle",
+          "atrip_id": "49785343",
+          "direction_id": 1,
+          "start_date": "20201010",
+          "schedule_relationship": "SCHEDULED"
+        },
+        "vehicle": {
+          "id": "6984",
+          "label": "6984"
+        },
+        "position": {
+          "latitude": 47.4797,
+          "longitude": -122.219
+        },
+        "current_stop_sequence": 117,
+        "stop_id": "79530",
+        "current_status": "IN_TRANSIT_TO",
+        "timestamp": 1602370000
+      },
+      "id": "1602365554_6984"
+    },
+    {
+      "vehicle": {
+        "trip": {
+          "route_num": "101",
+          "route": "Renton Transit Center - Downtown Seattle",
+          "atrip_id": "49785344",
+          "direction_id": 1,
+          "start_date": "20201010",
+          "schedule_relationship": "SCHEDULED"
+        },
+        "vehicle": {
+          "id": "8146",
+          "label": "8146"
+        },
+        "position": {
+          "latitude": 47.6109,
+          "longitude": -122.335
+        },
+        "current_stop_sequence": 385,
+        "stop_id": "1190",
+        "current_status": "IN_TRANSIT_TO",
+        "timestamp": 1602370000
+      },
+      "id": "1602365554_8146"
+    },
+    {
+      "vehicle": {
+        "trip": {
+          "route_num": "105",
+          "route": "Renton Highlands - Renton Transit Center",
+          "atrip_id": "49784658",
+          "direction_id": 1,
+          "start_date": "20201010",
+          "schedule_relationship": "SCHEDULED"
+        },
+        "vehicle": {
+          "id": "3715",
+          "label": "3715"
+        },
+        "position": {
+          "latitude": 47.4812,
+          "longitude": -122.208
+        },
+        "current_stop_sequence": 165,
+        "stop_id": "45303",
+        "current_status": "IN_TRANSIT_TO",
+        "timestamp": 1602370000
+      },
+      "id": "1602365554_3715"
+    },
+    {
+      "vehicle": {
+        "trip": {
+          "route_num": "105",
+          "route": "Renton Highlands - Renton Transit Center",
+          "atrip_id": "49784661",
+          "direction_id": 0,
+          "start_date": "20201010",
+          "schedule_relationship": "SCHEDULED"
+        },
+        "vehicle": {
+          "id": "3732",
+          "label": "3732"
+        },
+        "position": {
+          "latitude": 47.4832,
+          "longitude": -122.201
+        },
+        "current_stop_sequence": 43,
+        "stop_id": "54944",
+        "current_status": "IN_TRANSIT_TO",
+        "timestamp": 1602370000
+      },
+      "id": "1602365554_3732"
+    },
+    {
+      "vehicle": {
+        "trip": {
+          "route_num": "106",
+          "route": "Renton Transit Center - Skyway - Downtown Seattle",
+          "atrip_id": "47418630",
+          "direction_id": 1,
+          "start_date": "20201010",
+          "schedule_relationship": "SCHEDULED"
+        },
+        "vehicle": {
+          "id": "7077",
+          "label": "7077"
+        },
+        "position": {
+          "latitude": 47.5429,
+          "longitude": -122.284
+        },
+        "current_stop_sequence": 305,
+        "stop_id": "55702",
+        "current_status": "IN_TRANSIT_TO",
+        "timestamp": 1602370000
+      },
+      "id": "1602365554_7077"
+    },
+    {
+      "vehicle": {
+        "trip": {
+          "route_num": "106",
+          "route": "Renton Transit Center - Skyway - Downtown Seattle",
+          "atrip_id": "47418631",
+          "direction_id": 0,
+          "start_date": "20201010",
+          "schedule_relationship": "SCHEDULED"
+        },
+        "vehicle": {
+          "id": "7006",
+          "label": "7006"
+        },
+        "position": {
+          "latitude": 47.5237,
+          "longitude": -122.279
+        },
+        "current_stop_sequence": 213,
+        "stop_id": "31132",
+        "current_status": "IN_TRANSIT_TO",
+        "timestamp": 1602370000
+      },
+      "id": "1602365554_7006"
+    },
+    {
+      "vehicle": {
+        "trip": {
+          "route_num": "106",
+          "route": "Renton Transit Center - Skyway - Downtown Seattle",
+          "atrip_id": "47418632",
+          "direction_id": 0,
+          "start_date": "20201010",
+          "schedule_relationship": "SCHEDULED"
+        },
+        "vehicle": {
+          "id": "7093",
+          "label": "7093"
+        },
+        "position": {
+          "latitude": 47.5753,
+          "longitude": -122.297
+        },
+        "current_stop_sequence": 77,
+        "stop_id": "55980",
+        "current_status": "IN_TRANSIT_TO",
+        "timestamp": 1602370000
+      },
+      "id": "1602365554_7093"
+    },
+    {
+      "vehicle": {
+        "trip": {
+          "route_num": "106",
+          "route": "Renton Transit Center - Skyway - Downtown Seattle",
+          "atrip_id": "47418633",
+          "direction_id": 1,
+          "start_date": "20201010",
+          "schedule_relationship": "SCHEDULED"
+        },
+        "vehicle": {
+          "id": "7099",
+          "label": "7099"
+        },
+        "position": {
+          "latitude": 47.5394,
+          "longitude": -122.282
+        },
+        "current_stop_sequence": 291,
+        "stop_id": "55681",
+        "current_status": "IN_TRANSIT_TO",
+        "timestamp": 1602370000
+      },
+      "id": "1602365554_7099"
+    },
+    {
+      "vehicle": {
+        "trip": {
+          "route_num": "106",
+          "route": "Renton Transit Center - Skyway - Downtown Seattle",
+          "atrip_id": "47418642",
+          "direction_id": 1,
+          "start_date": "20201010",
+          "schedule_relationship": "SCHEDULED"
+        },
+        "vehicle": {
+          "id": "7080",
+          "label": "7080"
+        },
+        "position": {
+          "latitude": 47.4805,
+          "longitude": -122.208
+        },
+        "current_stop_sequence": 1,
+        "stop_id": "46464",
+        "current_status": "IN_TRANSIT_TO",
+        "timestamp": 1602370000
+      },
+      "id": "1602365554_7080"
+    },
+    {
+      "vehicle": {
+        "trip": {
+          "route_num": "106",
+          "route": "Renton Transit Center - Skyway - Downtown Seattle",
+          "atrip_id": "47418643",
+          "direction_id": 0,
+          "start_date": "20201010",
+          "schedule_relationship": "SCHEDULED"
+        },
+        "vehicle": {
+          "id": "7110",
+          "label": "7110"
+        },
+        "position": {
+          "latitude": 47.5992,
+          "longitude": -122.322
+        },
+        "current_stop_sequence": 14,
+        "stop_id": "8540",
+        "current_status": "IN_TRANSIT_TO",
+        "timestamp": 1602370000
+      },
+      "id": "1602365554_7110"
+    },
+    {
+      "vehicle": {
+        "trip": {
+          "route_num": "106",
+          "route": "Renton Transit Center - Skyway - Downtown Seattle",
+          "atrip_id": "47418693",
+          "direction_id": 1,
+          "start_date": "20201010",
+          "schedule_relationship": "SCHEDULED"
+        },
+        "vehicle": {
+          "id": "7091",
+          "label": "7091"
+        },
+        "position": {
+          "latitude": 47.4805,
+          "longitude": -122.208
+        },
+        "current_stop_sequence": 1,
+        "stop_id": "46464",
+        "current_status": "IN_TRANSIT_TO",
+        "timestamp": 1602370000
+      },
+      "id": "1602365554_7091"
+    },
+    {
+      "vehicle": {
+        "trip": {
+          "route_num": "106",
+          "route": "Renton Transit Center - Skyway - Downtown Seattle",
+          "atrip_id": "47418710",
+          "direction_id": 1,
+          "start_date": "20201010",
+          "schedule_relationship": "SCHEDULED"
+        },
+        "vehicle": {
+          "id": "7031",
+          "label": "7031"
+        },
+        "position": {
+          "latitude": 47.5037,
+          "longitude": -122.252
+        },
+        "current_stop_sequence": 158,
+        "stop_id": "55140",
+        "current_status": "IN_TRANSIT_TO",
+        "timestamp": 1602370000
+      },
+      "id": "1602365554_7031"
+    },
+    {
+      "vehicle": {
+        "trip": {
+          "route_num": "118",
+          "route": "Tahlequah - Vashon - Downtown Seattle",
+          "atrip_id": "47805215",
+          "direction_id": 1,
+          "start_date": "20201010",
+          "schedule_relationship": "SCHEDULED"
+        },
+        "vehicle": {
+          "id": "3711",
+          "label": "3711"
+        },
+        "position": {
+          "latitude": 47.4507,
+          "longitude": -122.46
+        },
+        "current_stop_sequence": 304,
+        "stop_id": "46850",
+        "current_status": "IN_TRANSIT_TO",
+        "timestamp": 1602370000
+      },
+      "id": "1602365554_3711"
+    },
+    {
+      "vehicle": {
+        "trip": {
+          "route_num": "12",
+          "route": "Interlaken Park - First Hill - Downtown Seattle",
+          "atrip_id": "49774291",
+          "direction_id": 0,
+          "start_date": "20201010",
+          "schedule_relationship": "SCHEDULED"
+        },
+        "vehicle": {
+          "id": "7041",
+          "label": "7041"
+        },
+        "position": {
+          "latitude": 47.632,
+          "longitude": -122.307
+        },
+        "current_stop_sequence": 96,
+        "stop_id": "13200",
+        "current_status": "IN_TRANSIT_TO",
+        "timestamp": 1602370000
+      },
+      "id": "1602365554_7041"
+    },
+    {
+      "vehicle": {
+        "trip": {
+          "route_num": "12",
+          "route": "Interlaken Park - First Hill - Downtown Seattle",
+          "atrip_id": "49774292",
+          "direction_id": 0,
+          "start_date": "20201010",
+          "schedule_relationship": "SCHEDULED"
+        },
+        "vehicle": {
+          "id": "7026",
+          "label": "7026"
+        },
+        "position": {
+          "latitude": 47.6042,
+          "longitude": -122.336
+        },
+        "current_stop_sequence": 6,
+        "stop_id": "1890",
+        "current_status": "IN_TRANSIT_TO",
+        "timestamp": 1602370000
+      },
+      "id": "1602365554_7026"
+    },
+    {
+      "vehicle": {
+        "trip": {
+          "route_num": "120",
+          "route": "Burien TC - Westwood Village - Downtown Seattle",
+          "atrip_id": "47419625",
+          "direction_id": 0,
+          "start_date": "20201010",
+          "schedule_relationship": "SCHEDULED"
+        },
+        "vehicle": {
+          "id": "6970",
+          "label": "6970"
+        },
+        "position": {
+          "latitude": 47.5174,
+          "longitude": -122.361
+        },
+        "current_stop_sequence": 282,
+        "stop_id": "21280",
+        "current_status": "IN_TRANSIT_TO",
+        "timestamp": 1602370000
+      },
+      "id": "1602365554_6970"
+    },
+    {
+      "vehicle": {
+        "trip": {
+          "route_num": "120",
+          "route": "Burien TC - Westwood Village - Downtown Seattle",
+          "atrip_id": "47419679",
+          "direction_id": 0,
+          "start_date": "20201010",
+          "schedule_relationship": "SCHEDULED"
+        },
+        "vehicle": {
+          "id": "2700",
+          "label": "2700"
+        },
+        "position": {
+          "latitude": 47.6022,
+          "longitude": -122.337
+        },
+        "current_stop_sequence": 135,
+        "stop_id": "15431",
+        "current_status": "IN_TRANSIT_TO",
+        "timestamp": 1602370000
+      },
+      "id": "1602365554_2700"
+    },
+    {
+      "vehicle": {
+        "trip": {
+          "route_num": "120",
+          "route": "Burien TC - Westwood Village - Downtown Seattle",
+          "atrip_id": "47419721",
+          "direction_id": 1,
+          "start_date": "20201010",
+          "schedule_relationship": "SCHEDULED"
+        },
+        "vehicle": {
+          "id": "6889",
+          "label": "6889"
+        },
+        "position": {
+          "latitude": 47.5033,
+          "longitude": -122.355
+        },
+        "current_stop_sequence": 92,
+        "stop_id": "51610",
+        "current_status": "IN_TRANSIT_TO",
+        "timestamp": 1602370000
+      },
+      "id": "1602365554_6889"
+    },
+    {
+      "vehicle": {
+        "trip": {
+          "route_num": "120",
+          "route": "Burien TC - Westwood Village - Downtown Seattle",
+          "atrip_id": "47419769",
+          "direction_id": 1,
+          "start_date": "20201010",
+          "schedule_relationship": "SCHEDULED"
+        },
+        "vehicle": {
+          "id": "2649",
+          "label": "2649"
+        },
+        "position": {
+          "latitude": 47.4702,
+          "longitude": -122.337
+        },
+        "current_stop_sequence": 14,
+        "stop_id": "51401",
+        "current_status": "IN_TRANSIT_TO",
+        "timestamp": 1602370000
+      },
+      "id": "1602365554_2649"
+    },
+    {
+      "vehicle": {
+        "trip": {
+          "route_num": "120",
+          "route": "Burien TC - Westwood Village - Downtown Seattle",
+          "atrip_id": "47419814",
+          "direction_id": 1,
+          "start_date": "20201010",
+          "schedule_relationship": "SCHEDULED"
+        },
+        "vehicle": {
+          "id": "2721",
+          "label": "2721"
+        },
+        "position": {
+          "latitude": 47.4701,
+          "longitude": -122.337
+        },
+        "current_stop_sequence": 1,
+        "stop_id": "52303",
+        "current_status": "IN_TRANSIT_TO",
+        "timestamp": 1602370000
+      },
+      "id": "1602365554_2721"
+    },
+    {
+      "vehicle": {
+        "trip": {
+          "route_num": "120",
+          "route": "Burien TC - Westwood Village - Downtown Seattle",
+          "atrip_id": "47419889",
+          "direction_id": 1,
+          "start_date": "20201010",
+          "schedule_relationship": "SCHEDULED"
+        },
+        "vehicle": {
+          "id": "6933",
+          "label": "6933"
+        },
+        "position": {
+          "latitude": 47.5174,
+          "longitude": -122.356
+        },
+        "current_stop_sequence": 117,
+        "stop_id": "22256",
+        "current_status": "IN_TRANSIT_TO",
+        "timestamp": 1602370000
+      },
+      "id": "1602365554_6933"
+    },
+    {
+      "vehicle": {
+        "trip": {
+          "route_num": "120",
+          "route": "Burien TC - Westwood Village - Downtown Seattle",
+          "atrip_id": "47419915",
+          "direction_id": 0,
+          "start_date": "20201010",
+          "schedule_relationship": "SCHEDULED"
+        },
+        "vehicle": {
+          "id": "8255",
+          "label": "8255"
+        },
+        "position": {
+          "latitude": 47.4993,
+          "longitude": -122.355
+        },
+        "current_stop_sequence": 313,
+        "stop_id": "52140",
+        "current_status": "IN_TRANSIT_TO",
+        "timestamp": 1602370000
+      },
+      "id": "1602365554_8255"
+    },
+    {
+      "vehicle": {
+        "trip": {
+          "route_num": "120",
+          "route": "Burien TC - Westwood Village - Downtown Seattle",
+          "atrip_id": "47419936",
+          "direction_id": 1,
+          "start_date": "20201010",
+          "schedule_relationship": "SCHEDULED"
+        },
+        "vehicle": {
+          "id": "8224",
+          "label": "8224"
+        },
+        "position": {
+          "latitude": 47.6039,
+          "longitude": -122.333
+        },
+        "current_stop_sequence": 420,
+        "stop_id": "548",
+        "current_status": "IN_TRANSIT_TO",
+        "timestamp": 1602370000
+      },
+      "id": "1602365554_8224"
+    },
+    {
+      "vehicle": {
+        "trip": {
+          "route_num": "124",
+          "route": "Tukwila International Blvd Sta - Downtown Seattle",
+          "atrip_id": "47380293",
+          "direction_id": 1,
+          "start_date": "20201010",
+          "schedule_relationship": "SCHEDULED"
+        },
+        "vehicle": {
+          "id": "8109",
+          "label": "8109"
+        },
+        "position": {
+          "latitude": 47.5005,
+          "longitude": -122.294
+        },
+        "current_stop_sequence": 158,
+        "stop_id": "31610",
+        "current_status": "IN_TRANSIT_TO",
+        "timestamp": 1602370000
+      },
+      "id": "1602365554_8109"
+    },
+    {
+      "vehicle": {
+        "trip": {
+          "route_num": "124",
+          "route": "Tukwila International Blvd Sta - Downtown Seattle",
+          "atrip_id": "47380318",
+          "direction_id": 0,
+          "start_date": "20201010",
+          "schedule_relationship": "SCHEDULED"
+        },
+        "vehicle": {
+          "id": "8049",
+          "label": "8049"
+        },
+        "position": {
+          "latitude": 47.6065,
+          "longitude": -122.335
+        },
+        "current_stop_sequence": 27,
+        "stop_id": "468",
+        "current_status": "IN_TRANSIT_TO",
+        "timestamp": 1602370000
+      },
+      "id": "1602365554_8049"
+    },
+    {
+      "vehicle": {
+        "trip": {
+          "route_num": "124",
+          "route": "Tukwila International Blvd Sta - Downtown Seattle",
+          "atrip_id": "47380330",
+          "direction_id": 0,
+          "start_date": "20201010",
+          "schedule_relationship": "SCHEDULED"
+        },
+        "vehicle": {
+          "id": "8057",
+          "label": "8057"
+        },
+        "position": {
+          "latitude": 47.5395,
+          "longitude": -122.32
+        },
+        "current_stop_sequence": 191,
+        "stop_id": "79569",
+        "current_status": "IN_TRANSIT_TO",
+        "timestamp": 1602370000
+      },
+      "id": "1602365554_8057"
+    },
+    {
+      "vehicle": {
+        "trip": {
+          "route_num": "131",
+          "route": "Burien TC - Georgetown - Downtown Seattle",
+          "atrip_id": "47380896",
+          "direction_id": 0,
+          "start_date": "20201010",
+          "schedule_relationship": "SCHEDULED"
+        },
+        "vehicle": {
+          "id": "8024",
+          "label": "8024"
+        },
+        "position": {
+          "latitude": 47.4703,
+          "longitude": -122.337
+        },
+        "current_stop_sequence": 327,
+        "stop_id": "52305",
+        "current_status": "IN_TRANSIT_TO",
+        "timestamp": 1602370000
+      },
+      "id": "1602365554_8024"
+    },
+    {
+      "vehicle": {
+        "trip": {
+          "route_num": "131",
+          "route": "Burien TC - Georgetown - Downtown Seattle",
+          "atrip_id": "47380897",
+          "direction_id": 0,
+          "start_date": "20201010",
+          "schedule_relationship": "SCHEDULED"
+        },
+        "vehicle": {
+          "id": "8077",
+          "label": "8077"
+        },
+        "position": {
+          "latitude": 47.5455,
+          "longitude": -122.33
+        },
+        "current_stop_sequence": 124,
+        "stop_id": "51870",
+        "current_status": "IN_TRANSIT_TO",
+        "timestamp": 1602370000
+      },
+      "id": "1602365554_8077"
+    },
+    {
+      "vehicle": {
+        "trip": {
+          "route_num": "131",
+          "route": "Burien TC - Georgetown - Downtown Seattle",
+          "atrip_id": "47380932",
+          "direction_id": 1,
+          "start_date": "20201010",
+          "schedule_relationship": "SCHEDULED"
+        },
+        "vehicle": {
+          "id": "8200",
+          "label": "8200"
+        },
+        "position": {
+          "latitude": 47.5155,
+          "longitude": -122.345
+        },
+        "current_stop_sequence": 79,
+        "stop_id": "51728",
+        "current_status": "IN_TRANSIT_TO",
+        "timestamp": 1602370000
+      },
+      "id": "1602365554_8200"
+    },
+    {
+      "vehicle": {
+        "trip": {
+          "route_num": "131",
+          "route": "Burien TC - Georgetown - Downtown Seattle",
+          "atrip_id": "47380934",
+          "direction_id": 1,
+          "start_date": "20201010",
+          "schedule_relationship": "SCHEDULED"
+        },
+        "vehicle": {
+          "id": "8103",
+          "label": "8103"
+        },
+        "position": {
+          "latitude": 47.4697,
+          "longitude": -122.337
+        },
+        "current_stop_sequence": 1,
+        "stop_id": "52304",
+        "current_status": "IN_TRANSIT_TO",
+        "timestamp": 1602370000
+      },
+      "id": "1602365554_8103"
+    },
+    {
+      "vehicle": {
+        "trip": {
+          "route_num": "14",
+          "route": "Mt Baker - Downtown Seattle",
+          "atrip_id": "49790982",
+          "direction_id": 0,
+          "start_date": "20201010",
+          "schedule_relationship": "SCHEDULED"
+        },
+        "vehicle": {
+          "id": "7119",
+          "label": "7119"
+        },
+        "position": {
+          "latitude": 47.605,
+          "longitude": -122.333
+        },
+        "current_stop_sequence": 30,
+        "stop_id": "480",
+        "current_status": "IN_TRANSIT_TO",
+        "timestamp": 1602370000
+      },
+      "id": "1602365554_7119"
+    },
+    {
+      "vehicle": {
+        "trip": {
+          "route_num": "14",
+          "route": "Mt Baker - Downtown Seattle",
+          "atrip_id": "49791030",
+          "direction_id": 0,
+          "start_date": "20201010",
+          "schedule_relationship": "SCHEDULED"
+        },
+        "vehicle": {
+          "id": "7113",
+          "label": "7113"
+        },
+        "position": {
+          "latitude": 47.5783,
+          "longitude": -122.293
+        },
+        "current_stop_sequence": 169,
+        "stop_id": "12190",
+        "current_status": "IN_TRANSIT_TO",
+        "timestamp": 1602370000
+      },
+      "id": "1602365554_7113"
+    },
+    {
+      "vehicle": {
+        "trip": {
+          "route_num": "148",
+          "route": "Fairwood - Renton Transit Center",
+          "atrip_id": "49784751",
+          "direction_id": 1,
+          "start_date": "20201010",
+          "schedule_relationship": "SCHEDULED"
+        },
+        "vehicle": {
+          "id": "3750",
+          "label": "3750"
+        },
+        "position": {
+          "latitude": 47.4438,
+          "longitude": -122.152
+        },
+        "current_stop_sequence": 1,
+        "stop_id": "60161",
+        "current_status": "IN_TRANSIT_TO",
+        "timestamp": 1602370000
+      },
+      "id": "1602365554_3750"
+    },
+    {
+      "vehicle": {
+        "trip": {
+          "route_num": "168",
+          "route": "Maple Valley - Kent Sounder Station",
+          "atrip_id": "49810608",
+          "direction_id": 0,
+          "start_date": "20201010",
+          "schedule_relationship": "SCHEDULED"
+        },
+        "vehicle": {
+          "id": "7228",
+          "label": "7228"
+        },
+        "position": {
+          "latitude": 47.3847,
+          "longitude": -122.233
+        },
+        "current_stop_sequence": 20,
+        "stop_id": "62216",
+        "current_status": "IN_TRANSIT_TO",
+        "timestamp": 1602370000
+      },
+      "id": "1602365554_7228"
+    },
+    {
+      "vehicle": {
+        "trip": {
+          "route_num": "168",
+          "route": "Maple Valley - Kent Sounder Station",
+          "atrip_id": "49810633",
+          "direction_id": 1,
+          "start_date": "20201010",
+          "schedule_relationship": "SCHEDULED"
+        },
+        "vehicle": {
+          "id": "7466",
+          "label": "7466"
+        },
+        "position": {
+          "latitude": 47.358,
+          "longitude": -122.157
+        },
+        "current_stop_sequence": 250,
+        "stop_id": "60494",
+        "current_status": "IN_TRANSIT_TO",
+        "timestamp": 1602370000
+      },
+      "id": "1602365554_7466"
+    },
+    {
+      "vehicle": {
+        "trip": {
+          "route_num": "168",
+          "route": "Maple Valley - Kent Sounder Station",
+          "atrip_id": "49810661",
+          "direction_id": 0,
+          "start_date": "20201010",
+          "schedule_relationship": "SCHEDULED"
+        },
+        "vehicle": {
+          "id": "7221",
+          "label": "7221"
+        },
+        "position": {
+          "latitude": 47.359,
+          "longitude": -122.106
+        },
+        "current_stop_sequence": 242,
+        "stop_id": "62301",
+        "current_status": "IN_TRANSIT_TO",
+        "timestamp": 1602370000
+      },
+      "id": "1602365554_7221"
+    }
+  ]
+}

@@ -108,9 +108,10 @@ let () = assert( parse_json (tokenize "{ \"foo\" : null }")
 let () = assert( parse_json (tokenize "{ \"foo\" : null, \"bar\" : [true, false] }")
               = (Object [("foo", Null); ("bar", Array [True; False])], []))
 
-(* Problem C11 : TBD *)
+(* Problem C11 : TODO *)
+(* Problem C12 : TODO *)
 
-(* Problem C12 : TBD *)
+(* Test suite : https://github.com/nst/JSONTestSuite *)
 
 let () = print_endline("HW2 challenge test OK")
 

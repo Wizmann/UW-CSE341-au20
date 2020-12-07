@@ -193,7 +193,7 @@ let consume_keyword_helper(cs : char list) : string * (char list) =
         match cs with
         | [] -> (result, [])
         | hd :: tl ->
-            if hd = ' ' then (result, cs)
+            if not (is_alpha hd) then (result, cs)
             else consume_keyword_helper_aux(tl, result ^ (char_to_string hd))
     in
     consume_keyword_helper_aux(cs, "")
@@ -324,17 +324,25 @@ let tokenize_char_list (cs : char list) : token list =
     match cs with
       [] -> List.rev acc
     | '\n' :: cs -> go cs acc  (* ignore newlines *)
-    | '{'  :: cs -> go cs (LBrace :: acc)
-    (* TODO, about 7 lines: several more cases here *)
+    | '{'  :: cs -> go cs (LBrace   :: acc)
+    | '}'  :: cs -> go cs (RBrace   :: acc)
+    | '['  :: cs -> go cs (LBracket :: acc)
+    | ']'  :: cs -> go cs (RBracket :: acc)
+    | ','  :: cs -> go cs (Comma    :: acc)
+    | ':'  :: cs -> go cs (Colon    :: acc)
+    | ' '  :: cs -> go cs acc
     | c :: cs ->
-       if is_digit c || c = '-'
-       then
+       if is_digit c || c = '-' then
          let (s, cs) = consume_num (c :: cs) in
          go cs (NumLit s :: acc)
-       else (* TODO, about 15 lines: check for string literals and keywords here 
-               and call the corresponding consumer. otherwise, call lexical error
-               as below. *)
-         lexical_error ("Unknown character " ^ char_to_string c)
+       else if c = '\"' then
+           let (s, cs) = consume_string_literal(c :: cs) in
+           go cs (StringLit s :: acc)
+       else if c = 't' || c = 'f' || c = 'n' then
+           let (s, cs) = consume_keyword(c :: cs) in
+           go cs (s :: acc)
+       else
+         lexical_error("Unknown character " ^ (char_to_string c))
   in
   go cs []
 
@@ -343,7 +351,7 @@ let tokenize_char_list (cs : char list) : token list =
 
    Hint: use char_list_of_string and tokenize_char_list *)
 let tokenize (s : string) : token list =
-  (* TODO, 1 line *) failwith "tokenize unimplemented"
+    tokenize_char_list (char_list_of_string s)
 
 
 (* The tokenizer produces a list of tokens, which we now need to
@@ -384,7 +392,9 @@ let syntax_error ((ts : token list), (msg : string)) =
    call `syntax_error` with the token list and an appropriate message.
 *)
 let parse_string (ts : token list) : string * token list =
-  (* TODO, about 3 lines *) failwith "parse_string unimplemented"
+    match ts with
+    | StringLit (sl) :: tl -> (sl, tl)
+    | _ -> syntax_error(ts, "Syntax error, token list doesn't start with a string literal")
 
 (* It is often useful to consume a single token from the token list
    and throw it away, returning the rest of the tokens and throwing an
@@ -396,7 +406,13 @@ let parse_string (ts : token list) : string * token list =
    If the token is not there as expected, call syntax_error with an
    appropriate message. *)
 let expect ((t : token), (ts : token list)) : token list =
-  (* TODO, about 6 lines *) failwith "expect unimplemented"
+    match ts with
+    | [] -> []
+    | hd :: tl ->
+            if t = hd then
+                tl
+            else 
+                syntax_error(ts, "Syntax error, token list is not expected")
 
 
 (* We're now ready to start writing a `parse_json` function, which

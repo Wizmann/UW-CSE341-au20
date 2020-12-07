@@ -29,6 +29,12 @@ let () = assert(
     consume_keyword (char_list_of_string "false foo") = (FalseTok, [' '; 'f'; 'o'; 'o']))
 
 let () = assert(
+    consume_keyword (char_list_of_string "false,foo") = (FalseTok, [','; 'f'; 'o'; 'o']))
+
+let () = assert(
+    consume_keyword (char_list_of_string "false ,foo") = (FalseTok, [' '; ','; 'f'; 'o'; 'o']))
+
+let () = assert(
     consume_keyword (char_list_of_string "null foo") = (NullTok, [' '; 'f'; 'o'; 'o']))
 
 let () =
@@ -39,19 +45,66 @@ let () =
         assert(msg = "Lexical error: Expecting keyword, character list does not start with a keyword.")
     | _ -> assert(false)
 
+(* Problem C3 *)
+let () = assert(
+    tokenize_char_list (char_list_of_string "{ \"foo\" : 3.14, \"bar\" : [true, false] }")
+             = [LBrace; StringLit "foo"; Colon; NumLit "3.14"; Comma; StringLit "bar";
+                Colon; LBracket; TrueTok; Comma; FalseTok; RBracket; RBrace])
+
+let () = assert(
+    tokenize_char_list (char_list_of_string "") = [])
+
+let () = assert(
+    tokenize_char_list (char_list_of_string "{ \"foo\" : 3.14, \"bar\" : [\"txxx\", false] }")
+             = [LBrace; StringLit "foo"; Colon; NumLit "3.14"; Comma; StringLit "bar";
+                Colon; LBracket; StringLit "txxx"; Comma; FalseTok; RBracket; RBrace])
+
+let () = assert(
+    tokenize_char_list (char_list_of_string "{ \"foo\" : 3.14, \"bar\" : [\"txxx\", \"hello world\", \"123\"] }")
+             = [LBrace; StringLit "foo"; Colon; NumLit "3.14"; Comma; StringLit "bar";
+                Colon; LBracket; StringLit "txxx"; Comma; StringLit "hello world"; Comma; StringLit "123"; RBracket; RBrace])
+
+let () =
+    try
+        assert(tokenize_char_list (char_list_of_string "{ \"foo\" : 3.14, \"bar\" : [txxx, false] }") = [])
+    with
+    | LexicalError(msg) -> assert(true)
+    | _ -> assert(false)
+
+let () =
+    try
+        assert(tokenize_char_list (char_list_of_string "hello foo") = [])
+    with
+    | LexicalError(msg) -> assert(true)
+    | _ -> assert(false)
+
+(* Problem C5 *)
+let () = assert(parse_string ([StringLit "foo"; FalseTok]) = ("foo", [FalseTok]))
+
+let () =
+    try
+        assert(parse_string ([TrueTok; FalseTok]) = ("foo", [FalseTok]))
+    with
+    | SyntaxError(msg) -> assert(true)
+    | _ -> assert(false)
+
+let () =
+    try
+        assert(parse_string ([]) = ("foo", [FalseTok]))
+    with
+    | SyntaxError(msg) -> assert(true)
+    | _ -> assert(false)
+
+(* Problem C6 *)
+let () = assert(expect (Colon, [Colon; FalseTok]) = [FalseTok])
+
 (*
 
 (* Commented out tests for challenge problems *)
 
 
 (* Test for tokenize_char_list. You'll want more. *)
-let testC3 = tokenize_char_list (char_list_of_string "{ \"foo\" : 3.14, \"bar\" : [true, false] }")
-             = [LBrace; StringLit "foo"; Colon; NumLit "3.14"; Comma; StringLit "bar";
-                Colon; LBracket; TrueTok; Comma; FalseTok; RBracket; RBrace]
 
-let testC5 = parse_string ([StringLit "foo"; FalseTok]) = ("foo", [FalseTok])
-
-let testC6 = expect (Colon, [Colon; FalseTok]) = [FalseTok]
 
 (* Test for parse_json. You'll want more. *)
 let testC10 = parse_json (tokenize "{ \"foo\" : null, \"bar\" : [true, false] }")

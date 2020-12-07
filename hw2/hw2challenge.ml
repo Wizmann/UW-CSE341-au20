@@ -93,6 +93,12 @@ type json =
   | Array of json list
   | Object of (string * json) list
 
+(* helper function that converts a token list to a string *)
+let rec string_of_token_list (ts : token list) : string = 
+    match ts with
+    | t :: tl -> (string_of_token t) ^ " -> " ^ (string_of_token_list tl)
+    | [] -> "<EOL>"
+
 (* helper function that converts a character to a string *)
 let char_to_string = String.make 1
 
@@ -432,38 +438,53 @@ let expect ((t : token), (ts : token list)) : token list =
    back to the helper functions later to complete the function.
 *)
 let rec parse_json (ts : token list) : json * token list =
-    (* Challenge Problem C7: write a `parse_field_value` function that parses one
-       field-value pair in an object.
+  (* Challenge Problem C7: write a `parse_field_value` function that parses one
+     field-value pair in an object.
 
-       The syntax for a field-value pair is a string literal,
-       representing the field name, followed by a colon, followed by
-       an arbitrary json value.
+     The syntax for a field-value pair is a string literal,
+     representing the field name, followed by a colon, followed by
+     an arbitrary json value.
 
-       Hint: use `parse_string` for the field name, `expect` for the
-             colon, and a recursive call to `parse_json` for the value. *)
+     Hint: use `parse_string` for the field name, `expect` for the
+           colon, and a recursive call to `parse_json` for the value. *)
   let parse_field_value (ts : token list) : (string * json) * token list =
-    (* TODO, about 7 lines *) failwith "parse_field_value unimplemented"
+      (* let () = Printf.printf "[parse_field_value] %s\n" (string_of_token_list ts) in *)
+      let (key, tl) = (parse_string ts) in
+      let (value, rem) = parse_json( expect (Colon, tl) ) in
+      ((key, value), rem)
   in
-    (* Challenge Problem C8: write a function `parse_field_value_list` that
-       parses a possibly empty comma-separated list of field-value
-       pairs, terminated by a closing brace. (This will be used below
-       to parse strings representing objects, which are always
-       surrounded in braces.)
 
-       Hint: use parse_field_value to parse each field-value pair.
+  (* Challenge Problem C8: write a function `parse_field_value_list` that
+     parses a possibly empty comma-separated list of field-value
+     pairs, terminated by a closing brace. (This will be used below
+     to parse strings representing objects, which are always
+     surrounded in braces.)
 
-       Hint: First check to see if the first token is a closing
-             brace. If so, immediately return the empty list.
-             Otherwise, parse a field-value pair and then check
-             whether the next token is a comma. If so, consume it an
-             recursively parse a list of field-value pairs, and then
-             cons the new field-value pair on the front. If it is not a comma,
-             immediately return a singleton list.
-     *)
+     Hint: use parse_field_value to parse each field-value pair.
+
+     Hint: First check to see if the first token is a closing
+           brace. If so, immediately return the empty list.
+           Otherwise, parse a field-value pair and then check
+           whether the next token is a comma. If so, consume it an
+           recursively parse a list of field-value pairs, and then
+           cons the new field-value pair on the front. If it is not a comma,
+           immediately return a singleton list.
+  *)
   let rec parse_field_value_list (ts : token list) : (string * json) list * token list =
-    (* TODO, about 15 lines *) failwith "parse_field_value_list unimplemented"
+      (* let () = Printf.printf "[parse_field_value_list] %s\n" (string_of_token_list ts) in *)
+      match ts with
+      | LBrace :: tl -> 
+          let ((key, value), rem) = (parse_field_value tl) in
+          let (l, t) = (parse_field_value_list rem) in 
+          ([(key, value)] @ l, t)
+      | RBrace :: tl -> ([], tl)
+      | Comma :: tl ->
+          let ((key, value), rem) = (parse_field_value tl) in
+          let (l, t) = (parse_field_value_list rem) in 
+          ([(key, value)] @ l, t)
+      | _ -> syntax_error(ts, "Syntax error, token list is not expected for key/field value list")
   in
-    (* Challenge Problem C9: Write a function `parse_array_element_list` that
+  (* Challenge Problem C9: Write a function `parse_array_element_list` that
        parses a possibly empty comma-separated list of json values,
        terminated by a closing square bracket.
 
@@ -471,9 +492,20 @@ let rec parse_json (ts : token list) : json * token list =
              that it calls `parse_json` instead of
              `parse_field_value`, and uses square brackets instead of
              curly braces.
-     *)
+  *)
   let rec parse_array_element_list (ts : token list) : json list * token list =
-    (* TODO, about 15 lines *) failwith "parse_array_element_list unimplemented"
+      (* let () = Printf.printf "[parse_array_element_list] %s\n" (string_of_token_list ts) in *)
+      match ts with
+      | LBracket :: tl -> 
+          let (j, rem) = (parse_json tl) in
+          let (l, t) = (parse_array_element_list rem) in
+          ([j] @ l, t)
+      | RBracket :: tl -> ([], tl)
+      | Comma :: tl -> 
+          let (j, rem) = (parse_json tl) in
+          let (l, t) = (parse_array_element_list rem) in
+          ([j] @ l, t)
+      | _ -> syntax_error(ts, "Syntax error, token list is not expected for key/field value list")
   in
   (* Challenge Problem C10: complete the definition of `parse_json` by adding
        branches to the pattern match below.
@@ -483,14 +515,25 @@ let rec parse_json (ts : token list) : json * token list =
 
        Hint: Very little new code needs to be written in each branch.
              Call the helper functions above as appropriate.
-     *)
+  *)
+  (* let () = Printf.printf "[parse_json] %s\n" (string_of_token_list ts) in *)
   match ts with
-    NumLit s :: ts -> begin
-    match Float.of_string_opt s with
-      Some r -> (Num r, ts)
-    | None -> syntax_error (ts, "bad float")
-    end
-  (* TODO, about 10 lines: more cases here *)
+  | NumLit s :: tl ->
+      begin
+      match Float.of_string_opt s with
+      | Some r -> (Num r, tl)
+      | None -> syntax_error (tl, "bad float")
+      end
+  | StringLit s :: tl -> (String s, tl)
+  | FalseTok :: tl -> (False, tl)
+  | TrueTok :: tl -> (True, tl)
+  | NullTok :: tl -> (Null, tl)
+  | LBrace :: tl ->
+        let (arr, rem) = (parse_field_value_list ts) in
+        (Object arr, rem)
+  | LBracket :: tl ->
+        let (arr, rem) = (parse_array_element_list ts) in
+        (Array arr, rem)
   | _ -> syntax_error (ts, "expecting json")
 
 (* Here is a provided function to parse a .json file, using your parser above. *)
@@ -515,8 +558,6 @@ let parse_from_file (file_name : string) : json =
   j
 
 
-(* Uncomment once your parser is complete to load the actual json data. *)
-(*
 ;;
 #print_depth 3;;
 #print_length 3;;
@@ -528,7 +569,6 @@ let all_bus = parse_from_file "complete_bus.json"
 ;;
 #print_depth 1000;;
 #print_length 1000000000;;
-*)
 
 (* Open-ended challenge problem C11: use your parser to explore some other
    data than the ones we have provided. If you find something

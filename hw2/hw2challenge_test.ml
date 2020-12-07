@@ -98,18 +98,19 @@ let () =
 (* Problem C6 *)
 let () = assert(expect (Colon, [Colon; FalseTok]) = [FalseTok])
 
-(*
+(* Problem C10 *)
+let () = assert( parse_json (tokenize "{ \"foo\" : null, \"bar\" : { \"t\": true, \"f\"   : false   } }")
+              = (Object [("foo", Null); ("bar", Object [("t", True); ("f", False)])], []))
 
-(* Commented out tests for challenge problems *)
+let () = assert( parse_json (tokenize "{ \"foo\" : null }")
+              = (Object [("foo", Null)], []))
 
+let () = assert( parse_json (tokenize "{ \"foo\" : null, \"bar\" : [true, false] }")
+              = (Object [("foo", Null); ("bar", Array [True; False])], []))
 
-(* Test for tokenize_char_list. You'll want more. *)
+(* Problem C11 : TBD *)
 
-
-(* Test for parse_json. You'll want more. *)
-let testC10 = parse_json (tokenize "{ \"foo\" : null, \"bar\" : [true, false] }")
-              = (Object [("foo", Null); ("bar", Array [True; False])], [])
-*)
+(* Problem C12 : TBD *)
 
 let () = print_endline("HW2 challenge test OK")
 

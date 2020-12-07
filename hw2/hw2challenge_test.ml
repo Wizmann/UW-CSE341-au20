@@ -24,12 +24,25 @@ let () =
         assert(msg = "Lexical error: Expecting string literal, the list has no closing double quote.")
     | _ -> assert(false)
 
+(* Problem C2 *)
+let () = assert(
+    consume_keyword (char_list_of_string "false foo") = (FalseTok, [' '; 'f'; 'o'; 'o']))
+
+let () = assert(
+    consume_keyword (char_list_of_string "null foo") = (NullTok, [' '; 'f'; 'o'; 'o']))
+
+let () =
+    try
+        assert(consume_keyword (char_list_of_string "hello foo") = (NullTok, [' '; 'f'; 'o'; 'o']))
+    with
+    | LexicalError(msg) ->
+        assert(msg = "Lexical error: Expecting keyword, character list does not start with a keyword.")
+    | _ -> assert(false)
+
 (*
 
 (* Commented out tests for challenge problems *)
 
-
-let testC2 = consume_keyword (char_list_of_string "false foo") = (FalseTok, [' '; 'f'; 'o'; 'o'])
 
 (* Test for tokenize_char_list. You'll want more. *)
 let testC3 = tokenize_char_list (char_list_of_string "{ \"foo\" : 3.14, \"bar\" : [true, false] }")

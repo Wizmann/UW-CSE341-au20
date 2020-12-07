@@ -120,7 +120,6 @@ exception LexicalError of string
    ("Lexical analysis" is another name for "tokenization".) *)
 let lexical_error msg = raise (LexicalError ("Lexical error: " ^ msg))
 
-
 (* The general idea of the tokenizer will be to examine the beginning
    of the character list to find the next token, "consume" it, and
    then continue to process the rest of the list. Here, "consuming"
@@ -188,8 +187,24 @@ let consume_string_literal (cs : char list) : string * char list =
 
    Either of the above strategies will receive full credit.
 *)
+
+let consume_keyword_helper(cs : char list) : string * (char list) =
+    let rec consume_keyword_helper_aux((cs : char list), (result : string)) : string * (char list) =
+        match cs with
+        | [] -> (result, [])
+        | hd :: tl ->
+            if hd = ' ' then (result, cs)
+            else consume_keyword_helper_aux(tl, result ^ (char_to_string hd))
+    in
+    consume_keyword_helper_aux(cs, "")
+
+
 let consume_keyword (cs : char list) : token * char list =
-  (* TODO, about 15 lines *) failwith "consume_keyword unimplemented"
+    let (str, rem) = consume_keyword_helper(cs) in 
+    match List.assoc_opt str [("true", TrueTok); ("false", FalseTok); ("null", NullTok)] with
+    | Some (t) ->
+        (t, rem)
+    | _ -> lexical_error "Expecting keyword, character list does not start with a keyword."
 
 (* Here's a provided consumer for numbers, since it's a bit complex.
    You shouldn't need to understand this code unless you want to.

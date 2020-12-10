@@ -147,4 +147,37 @@ let all_answers(func : 'a -> 'b list option) (items : 'a list) : 'b list option 
  *   * Nothing else matches.
 *)
 
+(* Problem 9
+ * (This problem uses the pattern recursive variant type but is not really about pattern-matching.)
+ * A function g has been provided to you in hw3types.ml.
+ * (a) In an OCaml comment in your hw3.ml file, describe in a few English sentences the arguments that
+ * g takes and what g computes (not how g computes it, though you will have to understand that to determine
+ * what g computes).
+ * Note: you write no code for this subproblem, only a comment.
+ * (b) Use g to define a function count_wildcards that takes a pattern and returns how many WildcardP
+ * patterns it contains.
+ * (c) Use g to define a function count_wild_and_variable_lengths that takes a pattern and returns
+ * the number of Wildcard patterns it contains plus the sum of the string lengths of all the variables
+ * in the variable patterns it contains. (Use String.length. We care only about variable names; the constructor
+ * names are not relevant.)
+ * (d) Use g to define a function count_a_var that takes a string and a pattern (curried) and returns
+ * the number of times the string appears as a variable in the pattern. We care only about variable names;
+ * the constructor names are not relevant.
+*)
+
+(* Answer for (a)
+ * Function `g` takes a pattern `p` and two functions `f1` and `f2`, and evaluate the "sum of the value" of the pattern by
+ * the element (and nested element) inside it with `f1` and `f2`.
+*)
+
+let count_wildcards (p : pattern) : int =
+    g (fun () -> 1) (fun _ -> 0) p
+
+let count_wild_and_variable_lengths (p : pattern) : int =
+    g (fun () -> 1) (fun str -> (String.length str)) p
+
+let count_a_var (var_key : string) (p : pattern) : int =
+    g (fun () -> 0) (fun str -> if str = var_key then 1 else 0) p
+
+
 

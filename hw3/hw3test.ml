@@ -88,5 +88,37 @@ let () = assert(
 let () = assert(
     (all_answers (fun x -> if (x mod 2 = 0) then (Some [x;x]) else None) [2;4]) = (Some [2;2;4;4]))
 
+(* Problem 9 *)
+let () = assert(
+    count_wildcards(WildcardP) = 1)
+
+let () = assert(
+    count_wildcards(ConstructorP("foo", WildcardP)) = 1)
+
+let () = assert(
+    count_wildcards(ConstructorP("foo", TupleP [WildcardP; WildcardP])) = 2)
+
+let () = assert(
+    count_wildcards(ConstructorP("foo", TupleP [WildcardP; ConstantP 1])) = 1)
+
+let () = assert(
+    count_wildcards(ConstructorP(
+        "foo",
+        TupleP [WildcardP; VariableP "xyz"; ConstantP 1; TupleP [WildcardP]; UnitP ])) = 2)
+
+let () = assert(
+    count_wild_and_variable_lengths(WildcardP) = 1)
+
+let () = assert(
+    count_wild_and_variable_lengths(ConstructorP("foo", WildcardP)) = 1)
+
+let () = assert(
+    count_wild_and_variable_lengths(ConstructorP("foo", TupleP [WildcardP; VariableP "xyz"])) = 4)
+
+let () = assert(
+    (count_a_var "foo" (ConstructorP("foo", TupleP [WildcardP; VariableP "xyz"]))) = 0)
+
+let () = assert(
+    (count_a_var "xyz" (ConstructorP("foo", TupleP [WildcardP; VariableP "xyz"]))) = 1)
 
 let () = print_endline("HW3 test OK")

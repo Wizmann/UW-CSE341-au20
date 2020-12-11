@@ -179,5 +179,48 @@ let count_wild_and_variable_lengths (p : pattern) : int =
 let count_a_var (var_key : string) (p : pattern) : int =
     g (fun () -> 0) (fun str -> if str = var_key then 1 else 0) p
 
+(* Problem 10
+ * Write a function check_pat that takes a pattern and returns true if and only if all the variables appearing
+ * in the pattern are distinct from each other (i.e., use different strings). The constructor names are not
+ * relevant.
+ * Hints: The sample solution uses two helper functions. The first takes a pattern and returns a list of all the
+ * strings it uses for variables. Using List.fold_left with a function that uses @ is useful in one case.
+ * The second takes a list of strings and decides if it has repeats. List.exists or List.mem may be useful.
+ * Sample solution is 15 lines.
+ * These are hints: We are not requiring List.fold_left and List.exists/List.mem here, but they make it easier.
+ *)
+let check_pat (p : pattern) : bool =
+    let rec get_all_tags (p : pattern) (tags : string list) : string list =
+        match p with
+        | ConstructorP(tag, p) -> (get_all_tags p (tag :: tags))
+        | TupleP (ps) -> List.fold_left (fun a b -> (a @ (get_all_tags b []))) tags ps
+        | _ -> tags
+    in
+    
+    let no_repeats (items : 'a list) : bool =
+        (List.length items) = (List.length (List.sort_uniq compare items))
+    in
 
+    let tags = (get_all_tags p []) in
+    (no_repeats tags)
+
+
+(* Problem 11
+ * Write a function matches of type valu -> pattern -> (string * valu) list option. It should take a value and
+ * a pattern, and return Some lst where lst is the list of bindings if the value matches the pattern, or None
+ * otherwise. Note that if the value matches but the pattern has no variables in it (i.e., no patterns of the
+ * form VariableP s), then the result is Some [].
+ * Hints: Sample solution has one match expression with 7 branches. The branch for tuples uses all_answers and List.combine.
+ * Sample solution is about 15 lines. Remember to look above for the rules for what patterns match what values,
+ * and what bindings they produce. These are hints: We are not requiring all_answers and List.combine here,
+ * but they make it easier.
+*)
+
+(* Problem 12
+ * Write a function first_match of type
+ * * valu -> pattern list -> (string * valu) list option:
+ * It returns None if no pattern in the list matches or Some lst where lst is the list of bindings for the first
+ * pattern in the list that matches. Hints: Use first_answer and a try-with-expression.
+ * Sample solution is about 3 lines.
+*)
 

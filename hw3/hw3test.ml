@@ -121,4 +121,23 @@ let () = assert(
 let () = assert(
     (count_a_var "xyz" (ConstructorP("foo", TupleP [WildcardP; VariableP "xyz"]))) = 1)
 
+(* Problem 10 *)
+
+let () = assert(
+    check_pat(TupleP [ConstructorP("foo", WildcardP); ConstructorP("bar", ConstantP(1))]) = true)
+
+let () = assert(
+    check_pat(TupleP [ConstructorP("foo", WildcardP); ConstructorP("foo", ConstantP(1))]) = false)
+
+let () = assert(
+    check_pat(TupleP [
+        ConstructorP("foo", WildcardP);
+        ConstructorP("bar", ConstantP(1));
+        TupleP [
+            ConstructorP("foo", WildcardP);
+            ConstructorP("bar", ConstantP(1));
+        ];
+    ]) = false)
+
+
 let () = print_endline("HW3 test OK")

@@ -13,7 +13,10 @@ let option_is_some(item : 'a option) : bool =
     | Some (v) -> true
     | _ -> false
 
-let option_is_none = not % option_is_some
+let option_is_none(item : 'a option) : bool =
+    match item with 
+    | Some (v) -> false
+    | _ -> true
 
 (* Problem 1
  * Write a function only_lowercase that takes a string list and returns a string list that has only
@@ -91,7 +94,7 @@ let caps_no_X_string =
 (** The next two problems involve writing functions over lists that will be useful in later problems. **)
 
 (* Problem 7
- * Write a function first_answer of type (’a -> ’b option) -> ’a list -> ’b (notice the 2 arguments are curried).
+ * Write a function first_answer of type ('a -> 'b option) -> 'a list -> 'b (notice the 2 arguments are curried).
  * The first argument should be applied to elements of the second argument in order until the first time it
  * returns Some v for some v and then v is the result of the call to first_answer.
  * If the first argument returns None for all list elements, then first_answer should raise the exception NoAnswer.
@@ -104,7 +107,7 @@ let first_answer(func : 'a -> 'b option) (items : 'a list) : 'b =
     | [] -> raise NoAnswer
 
 (* Problem 8
- * Write a function all_answers of type (’a -> ’b list option) -> ’a list -> ’b list option
+ * Write a function all_answers of type ('a -> 'b list option) -> 'a list -> 'b list option
  * (notice the 2 arguments are curried). The first argument should be applied to elements of the second argument.
  * If it returns None for any element, then the result for all_answers is None. Else the calls to the first argument
  * will have produced Some lst1, Some lst2, ... Some lstn and the result of all_answers is Some lst where lst is
@@ -117,17 +120,16 @@ let first_answer(func : 'a -> 'b option) (items : 'a list) : 'b =
 
 let all_answers(func : 'a -> 'b list option) (items : 'a list) : 'b list option =
     List.fold_left
-        (fun a b ->
-            if (option_is_none b) || (option_is_none a) then
+        (fun x y ->
+            if (option_is_none y) || (option_is_none x) then
                 None
             else
-                (Some ((option_get a) @ (option_get b)))
+                (Some ((option_get x) @ (option_get y)))
         )
         (Some [])
         (List.map func items)
 
-
-(* The remaining problems use these type definitions, which are inspired by the type definitions OCaml’s internals
+(* The remaining problems use these type definitions, which are inspired by the type definitions OCaml's internals
  * would use to implement pattern matching:
  *   * type pattern = WildcardP | VariableP of string | UnitP | ConstantP of int
  *                  | ConstructorP of string * pattern | TupleP of pattern list
@@ -207,7 +209,7 @@ let check_pat (p : pattern) : bool =
 
 (* Problem 11
  * Write a function matches of type valu -> pattern -> (string * valu) list option. It should take a value and
- * a pattern, and return Some lst where lst is the list of bindings if the value matches the pattern, or None
+ * a pattern, and return Some `lst` where `lst` is the list of bindings if the value matches the pattern, or None
  * otherwise. Note that if the value matches but the pattern has no variables in it (i.e., no patterns of the
  * form VariableP s), then the result is Some [].
  * Hints: Sample solution has one match expression with 7 branches. The branch for tuples uses all_answers and List.combine.
@@ -215,6 +217,23 @@ let check_pat (p : pattern) : bool =
  * and what bindings they produce. These are hints: We are not requiring all_answers and List.combine here,
  * but they make it easier.
 *)
+let rec matches (v : valu) (p : pattern) : (string * valu) list option = 
+    match v, p with
+    | Constructor(v_key, v_value), ConstructorP(p_key, p_value) ->
+            if v_key = p_key then (matches v_value p_value) else None
+    | Tuple (v_items), TupleP(p_items) ->
+            if (List.length v_items) != (List.length p_items) then
+                None
+            else
+                (all_answers (fun (v, p) -> (matches v p)) (List.combine v_items p_items))
+    | Constant(v), ConstantP(p) -> if v = p then Some [] else None
+    | Constant(v_value), VariableP(key) -> Some [(key, v)]
+    | Unit, VariableP(key) -> Some [(key, Unit)]
+    | Unit, UnitP -> Some []
+    | _, WildcardP -> Some []
+    | _, _ -> None
+;;
+
 
 (* Problem 12
  * Write a function first_match of type
@@ -223,4 +242,38 @@ let check_pat (p : pattern) : bool =
  * pattern in the list that matches. Hints: Use first_answer and a try-with-expression.
  * Sample solution is about 3 lines.
 *)
+let first_match (v : valu) (ps : pattern list) : (string * valu) list option =
+    try
+        Some (first_answer (fun p -> (matches v p)) ps)
+    with
+    | NoAnswer -> None
+    | _ -> assert(false)
+
+
+(***** Challenge Problem *****)
+
+(* Write a function typecheck_patterns that "type-checks" a pattern list. Types for our made-up pattern
+ * language are defined by:
+ * * type typ = AnythingT (* any type of value is okay *)
+ *              | UnitT (* type for Unit *)
+ *              | IntT (* type for integers *)
+ *              | TupleT of typ list (* tuple types *)
+ *              | VariantT of string (* some named variant *)
+ * typecheck_patterns should have type:
+ * * (string * string * typ) list -> pattern list -> typ option:
+ *
+ * The first argument contains elements that look like ("foo","bar",IntT), which means constructor foo
+ * makes a value of type VariantT "bar" given a value of type IntT. Assume list elements all have different
+ * first fields (the constructor name), but there are probably elements with the same second field (the
+ * variant name). Under the assumptions this list provides, you "type-check" the pattern list to see if there
+ * exists some typ (call it t) that all the patterns in the list can have. If so, return Some t, else return None.
+ * You must return the "most lenient" type that all the patterns can have. For example, given patterns
+ * * TupleP [VariableP "x", VariableP "y"] and TupleP [WildcardP, WildcardP];
+ * you should return
+ * * Some (TupleT [AnythingT, AnythingT])
+ * even though they could both have type TupleT [IntT, IntT]. As another example, if the only patterns
+ * are TupleP [WildcardP, WildcardP] and TupleP [WildcardP, TupleP [WildcardP, WildcardP]], you should return
+ * Some (TupleT [AnythingT, TupleT[AnythingT, AnythingT]]).
+*)
+
 

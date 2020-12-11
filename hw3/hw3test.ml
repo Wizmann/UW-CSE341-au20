@@ -84,7 +84,6 @@ let () = assert (
 (* Problem 8 *)
 let () = assert(
     (all_answers (fun x -> if (x mod 2 = 0) then (Some [x]) else None) [1;2;3;4]) = None)
-
 let () = assert(
     (all_answers (fun x -> if (x mod 2 = 0) then (Some [x;x]) else None) [2;4]) = (Some [2;2;4;4]))
 
@@ -139,5 +138,39 @@ let () = assert(
         ];
     ]) = false)
 
+(* Problem 11 *)
+let () = assert(
+    (matches (Constant 1) WildcardP) = Some [])
+
+let () = assert(
+    (matches (Constant 1) (ConstantP 2)) = None)
+
+let () = assert(
+    (matches (Constant 1) (VariableP "foo")) = (Some [("foo", (Constant 1))]))
+
+let () = assert(
+    (matches 
+        ( Tuple [(Constant 1); Unit] )
+        ( TupleP [(VariableP "foo")] ) ) = None)
+
+let () = assert(
+    (matches 
+        ( Tuple [(Constant 1); Unit] )
+        ( TupleP [(VariableP "foo"); UnitP] ) ) = (Some [("foo", (Constant 1))]))
+
+(* Problem 12 *)
+let () = assert(
+    (first_match (Constant 1) [WildcardP]) = Some [])
+
+let () = assert(
+    (first_match (Constant 1) [UnitP; WildcardP]) = Some [])
+
+let () = assert(
+    (first_match (Constant 1) [UnitP; (ConstantP 1)]) = Some [])
+
+let () = assert(
+    (first_match (Constant 1) [UnitP; (ConstantP 2)]) = None)
+
+(* Challenge Problem *)
 
 let () = print_endline("HW3 test OK")

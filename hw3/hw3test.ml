@@ -173,4 +173,75 @@ let () = assert(
 
 (* Challenge Problem *)
 
+let () = assert(
+    (typecheck_patterns [] [TupleP [VariableP "x"; VariableP "y"]; TupleP [WildcardP; WildcardP]]) = Some(TupleT [AnythingT; AnythingT]))
+
+let () = assert(
+    (typecheck_patterns [] []) = None)
+
+let () = assert(
+    (typecheck_patterns [] [TupleP [WildcardP; TupleP [WildcardP; WildcardP]]; TupleP [WildcardP; WildcardP]]) =
+        Some(TupleT [AnythingT; TupleT [AnythingT; AnythingT]]))
+
+let () = assert(
+    (typecheck_patterns [] [ConstantP 5; WildcardP; ConstantP 3; VariableP "x"]) = Some(IntT))
+
+let () = assert(
+    (typecheck_patterns [] [ConstantP 5; UnitP]) = None)
+
+let() = assert(
+    (typecheck_patterns [("c", "t", IntT)]  [ConstructorP("c", ConstantP 5); ConstantP 5]) = None)
+
+let () = assert(
+    (typecheck_patterns [] [TupleP [VariableP "x"]; TupleP [WildcardP; WildcardP]]) = None)
+
+let () = assert(
+    (typecheck_patterns [] [TupleP [WildcardP]; TupleP [WildcardP; WildcardP]]) = None)
+
+let () = assert(
+    (typecheck_patterns [] [TupleP [WildcardP; ConstantP 1]; TupleP [WildcardP; TupleP [WildcardP]]]) = None)
+
+let () = assert(
+    (typecheck_patterns [] [ConstructorP("c", VariableP "x")]) = None)
+
+let () = assert(
+    (typecheck_patterns
+        [("c", "t", TupleT [IntT; AnythingT])]
+        [ConstructorP("c", TupleP [ConstantP 4; VariableP "x"])]) = Some(VariantT "t"))
+
+let () = assert(
+    (typecheck_patterns
+        [("c1", "t1", UnitT); ("c2", "t2", UnitT)]
+        [ConstructorP("c1", UnitP); ConstructorP("c2", UnitP)]) = None)
+
+let () = assert(
+    (typecheck_patterns
+        [("c1", "t1", UnitT); ("c2", "t2", UnitT)]
+        [ConstructorP("c1", UnitP); ConstructorP("c1", UnitP)]) = Some(VariantT "t1"))
+
+let () = assert(
+    (typecheck_patterns
+        [("c", "t", TupleT[AnythingT; AnythingT])]
+        [ConstructorP("c", TupleP [ConstantP 4; VariableP "x"])]) = None) 
+
+let () = assert(
+    (typecheck_patterns
+        [("c", "t", IntT)]
+        [TupleP [WildcardP; TupleP [ConstantP 3; WildcardP]];
+         TupleP [WildcardP; TupleP [VariableP "x"; UnitP]];
+         TupleP [ConstructorP("c", ConstantP 13); WildcardP]])
+    = Some(TupleT [VariantT "t"; TupleT [IntT; UnitT]]))
+
+let () = assert(
+    (typecheck_patterns
+        [("c1", "t", TupleT[IntT; VariantT "t"]); ("c2", "t", UnitT)]
+        [ConstructorP("c1", TupleP [ConstantP 5; ConstructorP("c2", UnitP)]); ConstructorP("c2", UnitP)])
+    = Some(VariantT "t"))
+
+let () = assert(
+    (typecheck_patterns
+        [("foo1", "bar1", VariantT "bar2"); ("foo2", "bar2", UnitT)]
+        [ConstructorP("foo1", VariableP "x")])
+    = Some (VariantT "bar1"))
+
 let () = print_endline("HW3 test OK")

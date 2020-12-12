@@ -18,6 +18,15 @@ let option_is_none(item : 'a option) : bool =
     | Some (v) -> false
     | _ -> true
 
+let rec list_has_none(items : 'a option list) : bool =
+    match items with
+    | [] -> false
+    | hd :: tl ->
+            if option_is_none hd then
+                true
+            else
+                (list_has_none tl)
+
 (* Problem 1
  * Write a function only_lowercase that takes a string list and returns a string list that has only
  * the strings in the argument that start with an lowercase letter. Assume all strings have at least 1
@@ -254,11 +263,12 @@ let first_match (v : valu) (ps : pattern list) : (string * valu) list option =
 
 (* Write a function typecheck_patterns that "type-checks" a pattern list. Types for our made-up pattern
  * language are defined by:
- * * type typ = AnythingT (* any type of value is okay *)
- *              | UnitT (* type for Unit *)
- *              | IntT (* type for integers *)
- *              | TupleT of typ list (* tuple types *)
- *              | VariantT of string (* some named variant *)
+ * * type typ = 
+ *     | AnythingT (* any type of value is okay *)
+ *     | UnitT (* type for Unit *)
+ *     | IntT (* type for integers *)
+ *     | TupleT of typ list (* tuple types *)
+ *     | VariantT of string (* some named variant *)
  * typecheck_patterns should have type:
  * * (string * string * typ) list -> pattern list -> typ option:
  *
@@ -267,8 +277,10 @@ let first_match (v : valu) (ps : pattern list) : (string * valu) list option =
  * first fields (the constructor name), but there are probably elements with the same second field (the
  * variant name). Under the assumptions this list provides, you "type-check" the pattern list to see if there
  * exists some typ (call it t) that all the patterns in the list can have. If so, return Some t, else return None.
+ *
  * You must return the "most lenient" type that all the patterns can have. For example, given patterns
  * * TupleP [VariableP "x", VariableP "y"] and TupleP [WildcardP, WildcardP];
+ *
  * you should return
  * * Some (TupleT [AnythingT, AnythingT])
  * even though they could both have type TupleT [IntT, IntT]. As another example, if the only patterns
@@ -276,4 +288,82 @@ let first_match (v : valu) (ps : pattern list) : (string * valu) list option =
  * Some (TupleT [AnythingT, TupleT[AnythingT, AnythingT]]).
 *)
 
+let typecheck_patterns (ctors : (string * string * typ) list) (patterns : pattern list) : typ option =
+    let find_ctor (ctor_name : string) : (string * string * typ) option = 
+        List.find_opt (fun (typ_name, _, _) -> typ_name = ctor_name) ctors
+    in
 
+    let rec pattern_match_typ (p : pattern) (t :typ) : bool = 
+        match (p, t) with
+        | WildcardP, _ -> true
+        | VariableP (_), _ -> true
+        | UnitP, UnitT -> true
+        | ConstantP (_), IntT -> true
+        | ConstructorP(ctor_name, p), VariantT(var_name) ->
+                let ctor = find_ctor(ctor_name) in
+                if (option_is_none ctor) then
+                    false
+                else
+                    let (_, tp_name, tp) = (option_get ctor) in
+                    if tp_name = var_name then
+                        (pattern_match_typ p tp)
+                    else
+                        false
+        | TupleP (ps), TupleT (ts) -> 
+                if (List.length ps) != (List.length ts) then
+                    false
+                else
+                    List.combine ps ts
+                    |> List.map (fun (p, t) -> (pattern_match_typ p t))
+                    |> List.fold_left (&&) true
+        | _, _ -> false
+    in
+
+    let rec pattern_to_typ (p : pattern) (ctors : (string * string * typ) list) : typ option =
+        match p with 
+        | WildcardP -> Some AnythingT
+        | VariableP (_) -> Some AnythingT
+        | UnitP -> Some UnitT
+        | ConstantP (u) -> Some IntT
+        | ConstructorP (pattern_name, pattern) -> 
+                let ctor = (find_ctor pattern_name) in
+                if (option_is_none ctor) then
+                    None
+                else
+                    let (_, ctor_name, t) = (option_get ctor) in
+                    if (pattern_match_typ pattern t) then
+                        Some (VariantT ctor_name)
+                    else
+                        None
+        | TupleP (ps) ->
+                let ts = List.map (fun p -> (pattern_to_typ p ctors)) ps in
+                if (list_has_none ts) then None
+                else Some (TupleT (List.map option_get ts))
+    in
+
+    let rec typ_merge (t1 : typ) (t2 : typ) : typ option =
+        match t1, t2 with
+        | AnythingT, v -> Some v
+        | v, AnythingT -> Some v
+        | UnitT, UnitT -> Some UnitT
+        | IntT, IntT   -> Some IntT
+        | TupleT(tp1), TupleT(tp2) -> 
+                if (List.length tp1) != (List.length tp2) then
+                    None
+                else
+                    let tp = List.map (fun (item1, item2) -> (typ_merge item1 item2)) (List.combine tp1 tp2) in
+                    if (list_has_none tp) then
+                        None
+                    else
+                        Some (TupleT (List.map option_get tp))
+        | VariantT(v1), VariantT(v2) ->
+                if v1 = v2 then Some (VariantT v1)
+                else None
+        | _, _ -> None
+    in
+
+    let typs = List.map (fun p -> pattern_to_typ p ctors) patterns in
+    if (list_has_none typs) || (List.length typs) = 0 then
+        None
+    else
+        List.fold_left (fun a b -> (typ_merge (option_get a) (option_get b))) (Some AnythingT) typs

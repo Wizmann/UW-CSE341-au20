@@ -24,3 +24,7 @@ popd
 pushd hw3
 ocaml hw3test.ml
 popd
+
+pushd hw4
+ocaml hw4test.ml
+popd

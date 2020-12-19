@@ -2,11 +2,11 @@ language: c
 env:
     - OCAML_VERSION=4.08
 before_install:
-    - curl -L https://raw.githubusercontent.com/ocaml/ocaml-ci-scripts/master/.travis-ocaml.sh | sh
     - curl -O https://mirror.racket-lang.org/installers/7.9/racket-7.9-x86_64-linux.sh
     - echo "no\n./racket\n" > install_racket.txt
     - sh racket-7.9-x86_64-linux.sh < install_racket.txt
     - export PATH=`pwd`/racket/bin:$PATH
+    - curl -L https://raw.githubusercontent.com/ocaml/ocaml-ci-scripts/master/.travis-ocaml.sh | sh
     - eval $(opam config env)
 script:
     - bash test.sh

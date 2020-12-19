@@ -187,6 +187,24 @@
 
 ;; Problem 12 (Challenge)
 
+(assert (equal?
+          (stream-for-k-steps (cycle-lists-challenge (list 1 2 3) (list 4 5)) 6)
+          (list '(1 . 4)
+                '(2 . 5)
+                '(3 . 4)
+                '(1 . 5)
+                '(2 . 4)
+                '(3 . 5))))
+
+(assert (equal?
+          (stream-for-k-steps (cycle-lists-challenge (list 1 2 3) (list "x")) 6)
+          (list '(1 . "x")
+                '(2 . "x")
+                '(3 . "x")
+                '(1 . "x")
+                '(2 . "x")
+                '(3 . "x"))))
+
 ;; Problem 13 (Challenge)
 
 (displayln "HW5 test OK")

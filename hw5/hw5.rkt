@@ -199,8 +199,21 @@
 ;; car operations and two cdr operations, including operations performed by any function calls.
 ;; So, for example, you cannot use length because it uses cdr multiple times to compute a list's length.
 
+(define (cycle-lists-challenge xs ys)
+  (letrec ([f (lambda (xs1 ys1)
+                (cons
+                  (cons (car xs1) (car ys1))
+                  (lambda () (
+                              let ([xtl (cdr xs1)]
+                                   [ytl (cdr ys1)])
+                              (f (if (null? xtl) xs xtl) (if (null? ytl) ys ytl))))))])
+  (lambda () (f xs ys))))
+
+
+
 ;; Problem 13 (Challenge Problem)
 ;; Write caching-assoc-lru, which is like caching-assoc except it uses a policy
 ;; of "least recently used" for deciding which cache slot to replace. That is, when replacing a pair in
 ;; the cache, you must choose the pair that was least recently returned as an answer. Doing so requires
 ;; maintaining extra state.
+

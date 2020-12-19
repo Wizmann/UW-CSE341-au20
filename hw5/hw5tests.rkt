@@ -125,4 +125,68 @@
          (vector-assoc 2 #((1) (2) (3)))
          '(2)))
 
+;; Problem 10
+(assert (equal?
+          ((caching-assoc (list (list 1 2 3)) 5) 1)
+          (list 1 2 3)))
+
+(assert (equal?
+          ((caching-assoc (list (list 1 2 3)) 5) 2)
+          #f))
+
+(assert (equal?
+          (begin
+            ((caching-assoc (list (list 1 2 3)) 5) 2)
+            ((caching-assoc (list (list 1 2 3)) 5) 2))
+          #f))
+
+(assert (equal?
+          (begin
+            ((caching-assoc (list (list 1 2 3)) 5) 1)
+            ((caching-assoc (list (list 1 2 3)) 5) 1))
+          (list 1 2 3)))
+
+(assert (equal?
+          (begin
+            (let ([f (caching-assoc (list (list 100 200 300)) 1)])
+            (f 100)
+            (f 2)
+            (f 3)
+            (f 100)))
+          (list 100 200 300)))
+
+(assert (equal?
+          (begin
+            (let ([f (caching-assoc (list (list 100 200 300) (list 200 300 400)) 1)])
+            (f 100)
+            (f 200)
+            (f 200)
+            (f 100)))
+          (list 100 200 300)))
+
+;; Problem 11
+(assert (equal? (while-greater 2 do 1) #t))
+(assert (equal?
+          (begin
+            (let ([a 7] [cnt 0])
+              (begin
+                (while-greater 2 do (begin (set! a (- a 1)) (set! cnt (+ 1 cnt)) a))
+                cnt))) 5))
+(assert (equal?
+          (begin
+            (let ([a 7] [cnt 0])
+              (begin
+                (while-greater 2 do (begin (set! a (- a 1)) (set! cnt (+ 1 cnt)) a))
+                (cons a cnt)))) '(2 . 5)))
+(assert (equal?
+          (begin
+            (let ([a 2] [cnt 0])
+              (begin
+                (while-greater 2 do (begin (set! a (- a 1)) (set! cnt (+ 1 cnt)) a))
+                (cons a cnt)))) '(1 . 1)))
+
+;; Problem 12 (Challenge)
+
+;; Problem 13 (Challenge)
+
 (displayln "HW5 test OK")

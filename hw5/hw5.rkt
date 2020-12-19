@@ -143,7 +143,7 @@
 ;; first checks the cache for the answer. If it is not there, it uses assoc and xs to get the answer and if
 ;; the result is not #f (i.e., xs has a pair that matches), it adds the pair to the cache before returning
 ;; (using vector-set!). The cache slots are used in a round-robin fashion: the first time a pair is added
-;; to the cache it is put in position 0, the next pair is put in position 1, etc. up to position n   1 and
+;; to the cache it is put in position 0, the next pair is put in position 1, etc. up to position n - 1 and
 ;; then back to position 0 (replacing the pair already there), then position 1, etc.
 ;; Hints:
 ;; * In addition to a variable for holding the vector whose contents you mutate with vector-set!,
@@ -152,6 +152,22 @@
 ;; * To test your cache, it can be useful to add print expressions so you know when you are using the
 ;; cache and when you are not. But remove these print expressions before submitting your code.
 ;; * Sample solution is 15 lines.
+
+(define (caching-assoc xs n)
+  (let ([cache (make-vector n #f)]
+        [cache-index 0])
+    (lambda (v)
+      (let ([cached (vector-assoc v cache)])
+        (if (equal? cached #f)
+          (let ([result (assoc v xs)])
+            (if (equal? result #f)
+              #f
+              (begin
+                (vector-set! cache cache-index (cons v result))
+                (set! cache-index (remainder (+ cache-index 1) n))
+                result)))
+          (begin
+            (cdr cached)))))))
 
 ;; Problem 11
 ;; Define a macro that is used like (while-greater e1 do e2) where e1 and e2 are expressions and
@@ -168,6 +184,14 @@
 ;; (while-greater 2 do (begin (set! a (- a 1)) (print "x") a))
 ;; Evaluating the second line will print "x" 5 times and change a to be 2. So evaluating the third line
 ;; will print "x" 1 time and change a to be 1.
+(define-syntax while-greater
+  (syntax-rules (do)
+    [(while-greater e1 do e2)
+     (letrec ([v1 e1]
+              [f (lambda ()
+                   (begin (if (<= e2 v1) #t (f))))])
+             (f))]))
+
 
 ;; Problem 12 (Challenge Problem)
 ;; Write cycle-lists-challenge. It should be equivalent to cycle-lists, but its implementation must be more

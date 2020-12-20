@@ -217,3 +217,18 @@
 ;; the cache, you must choose the pair that was least recently returned as an answer. Doing so requires
 ;; maintaining extra state.
 
+(define (caching-assoc-lru xs n)
+    (let ([cache (make-list n '(#f))])
+      (lambda (x)
+        (let ([cached (assoc x cache)])
+          (if (equal? cached #f)
+              (let ([result (assoc x xs)])
+                (if (equal? result #f)
+                    #f
+                    (begin
+                        (set! cache
+                          (cons (cons x result) (take cache (- n 1))))
+                        result)))
+              (begin
+                (set! cache (cons cached (dropf cache (lambda (c) (equal? x (car c))))))
+                (cdr cached)))))))

@@ -206,5 +206,42 @@
                 '(3 . "x"))))
 
 ;; Problem 13 (Challenge)
+(assert (equal?
+          ((caching-assoc-lru (list (list 1 2 3)) 5) 1)
+          (list 1 2 3)))
+
+(assert (equal?
+          ((caching-assoc-lru (list (list 1 2 3)) 5) 2)
+          #f))
+
+(assert (equal?
+          (begin
+            ((caching-assoc-lru (list (list 1 2 3)) 5) 2)
+            ((caching-assoc-lru (list (list 1 2 3)) 5) 2))
+          #f))
+
+(assert (equal?
+          (begin
+            ((caching-assoc-lru (list (list 1 2 3)) 5) 1)
+            ((caching-assoc-lru (list (list 1 2 3)) 5) 1))
+          (list 1 2 3)))
+
+(assert (equal?
+          (begin
+            (let ([f (caching-assoc-lru (list (list 100 200 300)) 1)])
+            (f 100)
+            (f 2)
+            (f 3)
+            (f 100)))
+          (list 100 200 300)))
+
+(assert (equal?
+          (begin
+            (let ([f (caching-assoc-lru (list (list 100 200 300) (list 200 300 400)) 1)])
+            (f 100)
+            (f 200)
+            (f 200)
+            (f 100)))
+          (list 100 200 300)))
 
 (displayln "HW5 test OK")

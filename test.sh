@@ -28,3 +28,7 @@ popd
 pushd hw4
 ocaml hw4test.ml
 popd
+
+pushd hw5
+racket hw5tests.rkt
+popd

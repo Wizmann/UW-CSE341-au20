@@ -1,0 +1,43 @@
+# from lecture 20
+zero  = \next. \base. base;;
+one   = \next. \base. next base;;
+two   = \next. \base. next (next base);;
+inc   = \n. \next. \base. next (n next base);;
+three = inc two;;
+plus  = \n1. \n2. n1 inc n2;;
+mult  = \n1. \n2. n1 (plus n2) zero;;
+four  = plus two two;;
+
+# from the hw6 handout
+pair = \x. \y. \f. f x y;;
+fst  = \p. p (\x. \y. x);;
+snd  = \p. p (\x. \y. y);;
+
+# uncomment the following line and fill in your solution to problem 1(a)
+# pair_one_two = CHANGE(Problem 1(a));;
+
+# paste the value printed by REPL on the previous binding
+# and explain what it means
+# CHANGE(Problem 1(b))
+
+# Write a comment here explaining your attempt to write dec.
+# CHANGE(Problem 1(c)(i))
+
+# uncomment the following line and fill in your solution
+# dec_helper = \n. CHANGE(Problem 1(c)(ii));;
+
+# provided test: should return (encoded) (3, 2).
+# dec_helper three;;
+
+# uncomment the following line nd fill in your solution to 1(c)(iii)
+# dec = \n. CHANGE(Problem 1(c)(iii));;
+
+# provided test: should return (encoded) 2
+# dec three;;
+
+# Challenge Problem:
+# uncomment the following line and implement factorial
+# factorial = \n. CHANGE(Challenge Problem 1(d));;
+
+# provided test for challenge problem: should return (encoded) 6
+# factorial three;;

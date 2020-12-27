@@ -100,6 +100,20 @@
                 (list (int 10) (int 15))
                 "provided combined test using problems 2, 3, and 5")
 
+  (check-equal? (mupllist->racketlist
+       (eval-exp (call (call mupl-mapAddN (int 7))
+                       (racketlist->mupllist 
+                       (list (int 3) (int 4) (int 9))))))
+    (list (int 10) (int 11) (int 16))
+    "combined test1")
+
+  (check-equal? (mupllist->racketlist
+       (eval-exp (call (call mupl-mapAddN (int 7))
+                       (racketlist->mupllist 
+                       (list)))))
+   (list)
+   "combined test2")
+
   ; Challenge Problem
   (check-equal? (eval-exp-c
                   (call (call mupl-filter

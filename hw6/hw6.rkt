@@ -244,6 +244,22 @@
             (fun null "item" (isgreater (var "item") (var "i")))))))
 
 
+(define mupl-map
+  (fun null "func"
+    (fun "do_map" "items"
+      (ifmunit (var "items")
+        (munit)
+        (mlet* (list [cons "tl" (call (var "do_map") (second (var "items")))]
+                     [cons "hd" (call (var "func") (first (var "items")))])
+          (apair (var "hd") (var "tl")))))))
+
+(define mupl-mapAddN
+  (mlet "map" mupl-map
+    (fun null "i"
+      (call (var "map")
+        (fun null "item" (add (var "i") (var "item")))))))
+  
+
 ;; Challenge Problem
 ;; Write a second version of eval-exp (bound to eval-exp-c) that builds closures
 ;; with smaller environments: When building a closure, it uses an environment that is like the current

@@ -4,7 +4,7 @@
 
 Course url : https://sites.google.com/cs.washington.edu/cse341au20/home
 
-Working in progress...
+Done! @ 2020-12-29
 
 ## DISCLAIMER
 

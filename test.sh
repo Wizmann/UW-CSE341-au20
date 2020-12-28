@@ -37,3 +37,6 @@ pushd hw6
 racket -l errortrace -t hw6tests.rkt 1> /dev/null
 popd
 
+pushd hw7
+racket hw7tests.rkt
+popd

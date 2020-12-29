@@ -83,9 +83,10 @@
                       (vector '(0 . 0) '(0 . -1) '(0 . 1) '(0 . 2) '(0 . -2)))     ; OOOOO
 
               (rotations (vector '(0 . 0) '(-1 . 0) '(1 . 0) '(0 . 1) '(-1 . 1)))  ; OO
-                                                                                  ; OOO
+                                                                                   ; OOO
+                                                                                   
               (rotations (vector '(0 . 0) '(1 . 0) '(0 . 1)))                      ; O
-                                                                                  ; OO
+                                                                                   ; OO
           )))))
         
     (define/override (store-current)
